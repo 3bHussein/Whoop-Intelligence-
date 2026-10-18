@@ -28,15 +28,33 @@ Deno.serve(async req=>{
 
   if(body.action==="disconnect"){
    if(body.confirm!=="DISCONNECT")return send({error:"confirmation_required"},400);
-   // Deleting locally does not guarantee remote WHOOP authorization is revoked.
+   // Best-effort remote revocation precedes local erasure; never return credentials or upstream bodies.
+   const {data:token,error:tokenReadError}=await db.from("whoop_oauth_tokens").select("access_ciphertext,expires_at").eq("user_id",user.id).maybeSingle();
+   if(tokenReadError)return send({error:"storage_failed"},503);
+   let revokeStatus="not_connected";
+   if(token){
+    revokeStatus="expired_token";
+    if(Date.parse(token.expires_at)>Date.now()){
+     try{
+      const raw=Deno.env.get("WHOOP_TOKEN_ENCRYPTION_KEY");if(!raw)throw Error("key");
+      const decode=(v:string)=>Uint8Array.from(atob(v),c=>c.charCodeAt(0));
+      const key=await crypto.subtle.importKey("raw",decode(raw),"AES-GCM",false,["decrypt"]);
+      const [iv,ct]=token.access_ciphertext.split(".");
+      const access=new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:decode(iv)},key,decode(ct)));
+      const response=await fetch("https://api.prod.whoop.com/developer/v2/user/access",{method:"DELETE",headers:{Authorization:"Bearer "+access},signal:AbortSignal.timeout(12000)});
+      revokeStatus=response.status===204?"revoked":response.status===401?"rejected":response.status===429?"rate_limited":"provider_failed";
+     }catch{revokeStatus="unavailable"}
+    }
+   }
    const {error:recordsError}=await db.from("whoop_health_records").delete().eq("user_id",user.id);
    if(recordsError)return send({error:"record_deletion_failed"},503);
    const {error:tokensError}=await db.from("whoop_oauth_tokens").delete().eq("user_id",user.id);
    if(tokensError)return send({error:"token_deletion_failed"},503);
-   await db.from("whoop_oauth_pending").delete().eq("user_id",user.id);
+   const {error:pendingError}=await db.from("whoop_oauth_pending").delete().eq("user_id",user.id);
+   if(pendingError)return send({error:"pending_deletion_failed"},503);
    const {error:historyError}=await db.from("whoop_sync_runs").delete().eq("user_id",user.id);
    if(historyError)return send({error:"history_deletion_failed"},503);
-   return send({disconnected:true,local_records_deleted:true,remote_revoke_unverified:true});
+   return send({disconnected:true,local_records_deleted:true,remote_revoked:revokeStatus==="revoked",remote_revoke_status:revokeStatus,remote_revoke_unverified:revokeStatus!=="revoked"});
   }
   return send({error:"unknown_action"},400);
  }catch{return send({error:"server_error"},503)}
