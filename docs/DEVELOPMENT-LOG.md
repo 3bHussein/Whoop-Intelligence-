@@ -168,3 +168,9 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - **VERIFIED:** [PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39142908610) passed 46 Node tests and 21 browser scenarios across Chromium, Firefox and WebKit. Includes visible meaning/actions, consistent period comparisons, eligibility and existing auth/mobile/report regressions.
 - **DONE / VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39143092537) succeeded. Production dashboard, meaning module and stylesheet fetched with HTTP 200 and exact source hashes.
 - Arabic mobile interpretation card visually inspected. **NEEDS TEST:** user acceptance and qualified clinical/sports review. Rule-based educational meanings do not establish causation, diagnose illness, infer individual sleep need or clear exercise. Source/reference links remain visible. No backend or health-data mutations.
+
+## 2026-10-18 — Understandable observed comparisons
+- DONE: Replaced r-first relationship cards with actual higher/lower-group median values and counts. Seven matched days and three observations each side required; ties excluded. Coefficients retained in collapsed calculation details; preliminary/sensitive results clearly qualified.
+- DONE: HRV/resting pulse show earlier observed minimum–maximum with reference count; this is explicitly a historical range, never a medical normal range. Individual directional changes no longer get an attention color on their own. Removed duplicate metric definitions and collapsed generic action paragraphs.
+- VERIFIED locally: 52 Node tests, 7 Chromium browser scenarios including bilingual relationship rendering and hidden technical details. Arabic mobile sleep-card screenshot inspected. No backend changes, credentials or account-data mutations.
+- NEEDS TEST: Cross-browser CI, deployment, real-account acceptance and clinical/sports review. Prior integration blockers remain unchanged.

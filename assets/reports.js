@@ -6,7 +6,7 @@ export function buildReport(records,period=1,now=new Date()){
   const s=a.metrics[key],baseline=windowStats(a.days,key,30,previousDay),daily=period===1,value=s.current.median;
   const reference=daily?baseline:s.previous,eligible=daily?reference.count>=7:s.current.count>=3&&reference.count>=3;
   const difference=numeric(value)&&eligible?value-reference.median:null;
-  return [key,{value,count:s.current.count,coverage:s.current.coverage,reference:reference.median,referenceCount:reference.count,difference,referenceStart:reference.start,referenceEnd:reference.end,stamp:s.current.rows.at(-1)?(key==='strain'?s.current.rows.at(-1).cycle?.end||s.current.rows.at(-1).cycle?.start:['sleep','efficiency','consistency'].includes(key)?s.current.rows.at(-1).sleepRecord?.end:s.current.rows.at(-1).measuredAt):null}];
+  return [key,{value,count:s.current.count,coverage:s.current.coverage,reference:reference.median,referenceCount:reference.count,referenceMin:reference.count?Math.min(...reference.rows.map(row=>row[key])):null,referenceMax:reference.count?Math.max(...reference.rows.map(row=>row[key])):null,difference,referenceStart:reference.start,referenceEnd:reference.end,stamp:s.current.rows.at(-1)?(key==='strain'?s.current.rows.at(-1).cycle?.end||s.current.rows.at(-1).cycle?.start:['sleep','efficiency','consistency'].includes(key)?s.current.rows.at(-1).sleepRecord?.end:s.current.rows.at(-1).measuredAt):null}];
  }));
  const keyMetrics=['recoveryScore','sleep','strain'];return {...a,localKnown:a.days.some(d=>d.offset||d.cycle?.timezone_offset),period,start:a.metrics.rhr.current.start,metrics,available:keyMetrics.filter(k=>metrics[k].value!==null).length,total:keyMetrics.length};
 }
