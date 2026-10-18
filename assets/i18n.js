@@ -13,3 +13,6 @@ Object.assign(copy.ar,{today:'اليوم',dailyReport:'يومك في نظرة و
 
 Object.assign(copy.en,{reportPoints:'points',reportUTC:'UTC date — no recorded WHOOP time-zone offset available'});
 Object.assign(copy.ar,{reportPoints:'نقطة',reportUTC:'تاريخ UTC — فارق توقيت WHOOP غير متاح في السجل'});
+
+Object.assign(copy.ar,{rhr:'RHR — نبض القلب أثناء الراحة',hrv:'HRV — تباين معدل ضربات القلب'});
+Object.assign(copy.en,{rhr:'RHR — Resting heart rate',hrv:'HRV — Heart rate variability'});
