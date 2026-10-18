@@ -143,3 +143,10 @@ User feedback: the design works well, but statistical detail is overwhelming wit
 - **DONE:** Weekly/monthly report compares period medians against previous equal-length windows (at least three observations each). Difference labels use percentage points where appropriate. Source times/counts remain available in expandable evidence.
 - **VERIFIED locally:** 37 Node tests PASS (seven new report-model tests), 7 extended Chromium browser scenarios PASS before final documentation. Includes today selection, both modes, print control visibility, local-midnight alignment, missing today, partial scores and insufficient baseline. Browser clock fixed to fixture date to prevent calendar-dependent regressions.
 - **NEEDS TEST:** PR cross-browser CI, deployment and real Android acceptance. No backend, authentication, credential or database changes.
+
+### Daily-report release evidence
+
+- **VERIFIED:** code `c308538766eccf65826b84fd7fe5d3188459c72d`, [PR #3](https://github.com/3bHussein/Whoop-Intelligence-/pull/3), merge `e12d367254add45b4e383905a5ad7ca819fecfc9`.
+- **VERIFIED:** [PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39141456638) executed 37 Node tests and 21 browser scenarios across Chromium/Firefox/WebKit successfully, including daily direct URL, print visibility, both presentation modes and mobile RTL/LTR.
+- **DONE / VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39141590049) succeeded. Five changed public HTML/JS/CSS files fetched with HTTP 200 and exact source hashes; daily query entry also returned HTTP 200.
+- Arabic mobile report screenshot visually reviewed. Fixture verification is not real-account or physical Android acceptance; those remain **NEEDS TEST**. No health data, credentials or backend state modified.

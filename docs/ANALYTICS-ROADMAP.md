@@ -114,3 +114,5 @@ Simple/Advanced is now **DONE / VERIFIED** by [PR #2 CI](https://github.com/3bHu
 - **VERIFIED (fixtures):** Daily observations match exactly today's source-local date; prior 30-day baseline excludes today and needs seven earlier observations. No historic reading substituted for missing today. Weekly/monthly compare disjoint periods with minimum three observations each.
 - **DONE:** Same-day provisional-load note, missing/partial warnings, per-metric source times, confidence through sample evidence, percentage-point difference labels, explicit UTC fallback if source offset is unavailable.
 - **NEEDS TEST:** Cross-browser CI/deployment and real-account Android acceptance. Scheduler/token-expiry/destructive testing remain separate open tasks.
+
+Daily/report design is now **DONE / VERIFIED** through [PR #3 CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39141456638) (37 Node tests, 21 cross-browser scenarios), successful Pages deployment and production hash verification. Daily entry: [today's report](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html?period=1#reports). Physical-device/real-account acceptance remains **NEEDS TEST**.
