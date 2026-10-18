@@ -161,3 +161,10 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - **DONE:** Source-linked CDC general adult sleep reference, clearly separated from individual need and 24-hour sleep including naps. Recovery is explained as WHOOP's composite score, not literal restored-body/energy percentage. No universal HRV/RHR cutoffs introduced.
 - **VERIFIED locally:** 46 Node tests and 7 Chromium scenarios passed, including the final composite-reference regression test. Includes opposing latest-vs-median direction, insufficient history, short-but-improved sleep, missing data, contextual strain and bilingual rules. UI asserts visible meaning/actions and absence of the mismatched latest-reading label.
 - **NEEDS TEST:** Cross-browser CI, deployment and real user acceptance. Source review references are in README. Clinical/sports expert review remains open. No backend, credential or health-data mutation.
+
+### Meaning-first release evidence
+
+- **VERIFIED:** implementation `d5b1edf82cc718f15e7e2a9e16c59cb44ab6c018`, evidence-summary follow-up `6e0468dc67d3c6870f10cc44da52314f14939d85`, [PR #4](https://github.com/3bHussein/Whoop-Intelligence-/pull/4), merge `bfff3544df2652f22990152614f42710d8d2ce23`.
+- **VERIFIED:** [PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39142908610) passed 46 Node tests and 21 browser scenarios across Chromium, Firefox and WebKit. Includes visible meaning/actions, consistent period comparisons, eligibility and existing auth/mobile/report regressions.
+- **DONE / VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39143092537) succeeded. Production dashboard, meaning module and stylesheet fetched with HTTP 200 and exact source hashes.
+- Arabic mobile interpretation card visually inspected. **NEEDS TEST:** user acceptance and qualified clinical/sports review. Rule-based educational meanings do not establish causation, diagnose illness, infer individual sleep need or clear exercise. Source/reference links remain visible. No backend or health-data mutations.
