@@ -35,3 +35,7 @@ WHOOP Developer Sandbox application exists. User screenshots confirm the six rea
 7. Verify the published privacy URL returns HTTP 200 to the public.
 
 Privacy URL publication could not yet be independently confirmed.
+
+## Project status and development tracking
+
+See [Development Log](docs/DEVELOPMENT-LOG.md) for completed, unverified, blocked and planned features, and [Analytics Roadmap](docs/ANALYTICS-ROADMAP.md) for detailed implementation notes. Each meaningful change should update the log with test results.
