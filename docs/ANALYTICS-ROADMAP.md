@@ -106,3 +106,11 @@ M6 automated quality is now **VERIFIED** for the executed fixture suite: 26 Node
 - No backend/auth/database modification is included in this presentation update. Existing scheduler, remote revocation and destructive acceptance blockers remain unchanged.
 
 Simple/Advanced is now **DONE / VERIFIED** by [PR #2 CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140053190) (30 Node tests / 21 three-engine browser scenarios), successful Pages deployment and production asset hashes. Physical-device acceptance remains **NEEDS TEST**.
+
+## Daily report and report design — 2026-10-18
+
+- **DONE:** Dedicated report cover, date, key-metric completeness, Recovery/Sleep/Strain cards, collapsible heart/sleep details, print controls and print styling in AR/EN.
+- **DONE:** Today / 7 / 30 day selector and overview shortcut. Direct daily URL: `analysis.html?period=1#reports`.
+- **VERIFIED (fixtures):** Daily observations match exactly today's source-local date; prior 30-day baseline excludes today and needs seven earlier observations. No historic reading substituted for missing today. Weekly/monthly compare disjoint periods with minimum three observations each.
+- **DONE:** Same-day provisional-load note, missing/partial warnings, per-metric source times, confidence through sample evidence, percentage-point difference labels, explicit UTC fallback if source offset is unavailable.
+- **NEEDS TEST:** Cross-browser CI/deployment and real-account Android acceptance. Scheduler/token-expiry/destructive testing remain separate open tasks.

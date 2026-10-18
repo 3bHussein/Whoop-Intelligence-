@@ -135,3 +135,11 @@ User feedback: the design works well, but statistical detail is overwhelming wit
 - **VERIFIED:** [PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140053190) passed: 30 Node tests and 21 browser scenarios across Chromium, Firefox and WebKit. Tests cover Simple default, hidden charts/collapsed evidence, persistent mode and language, Advanced chart restoration, navigation, anonymous state and existing auth regressions.
 - **DONE / VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140231870) succeeded. Production analysis page, dashboard module and new presentation module fetched with HTTP 200 and exact local-source hash matches.
 - Mobile Arabic screenshot visually inspected. **NEEDS TEST:** real Android/user acceptance of simplified wording; backend real-token/deletion/scheduler blockers remain documented separately. No backend or database changes in this batch.
+
+## Daily reports / redesigned report batch — 2026-10-18
+
+- **DONE:** New report layout for Today, 7 days and 30 days, with distinct cover, local date, key-reading availability, three primary cards and collapsible cardiovascular/sleep detail. Supports Simple/Advanced and print/PDF presentation.
+- **DONE:** Daily report uses exactly today's WHOOP-local measurements, never the most recent old reading. Compares to median of preceding 30 calendar days, excluding today, minimum seven observations. Unscored strain remains missing; ongoing-day note avoids implying the day is final. Missing offset is explicitly labeled UTC.
+- **DONE:** Weekly/monthly report compares period medians against previous equal-length windows (at least three observations each). Difference labels use percentage points where appropriate. Source times/counts remain available in expandable evidence.
+- **VERIFIED locally:** 37 Node tests PASS (seven new report-model tests), 7 extended Chromium browser scenarios PASS before final documentation. Includes today selection, both modes, print control visibility, local-midnight alignment, missing today, partial scores and insufficient baseline. Browser clock fixed to fixture date to prevent calendar-dependent regressions.
+- **NEEDS TEST:** PR cross-browser CI, deployment and real Android acceptance. No backend, authentication, credential or database changes.

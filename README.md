@@ -55,3 +55,7 @@ GitHub Pages runs tests before deployment and publishes only HTML + `assets/`, e
 The dashboard defaults to **Simple**: three key overview cards, a short personal recovery summary and sleep in hours/minutes. Metric definitions and calculation evidence expand on demand. **Advanced** preserves all charts, baselines, sample sizes, period averages, comparisons and relationships. The display preference is saved on this browser and survives refresh, language changes and navigation. Both views use the same authenticated records; display mode does not change calculations, synchronization or privacy controls.
 
 Simple/Advanced shipped in [PR #2](https://github.com/3bHussein/Whoop-Intelligence-/pull/2), with [30 Node tests and 21 cross-browser scenarios passing](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140053190).
+
+## Daily, weekly and monthly reports
+
+[Today’s report](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html?period=1#reports) presents only the current WHOOP-local day's scored observations, compared with the preceding 30 calendar days (minimum seven earlier observations). Missing today remains missing, never replaced with yesterday. Today remains provisional because activity load can change. The redesigned report includes clear metric cards, completeness, expandable evidence, Simple/Advanced detail and print/PDF styling. Weekly/monthly comparisons use disjoint equal-length windows, with at least three observations in each. No WHOOP offset available means an explicit UTC fallback label.
