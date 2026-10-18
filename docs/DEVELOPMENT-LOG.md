@@ -96,3 +96,11 @@ Significant fixes: replaced `created_at`/UTC approximations with cycle/sleep IDs
 Database security inspection: original 7/7 tables had RLS and no anon/authenticated SELECT grants; the new eighth sync table matches that service-only design. Advisor's RLS/no-policy INFO notices are expected; leaked-password-protection WARN is documented without changing auth settings. No current health records, tokens, or connections were deleted. Other projects untouched.
 
 Remaining priorities: verify PR CI; deploy checked data/account functions; perform non-destructive unauthenticated denial checks; merge only after required CI; confirm Pages deployment. Then real-account acceptance (fresh read/sync, genuine expiry), disposable deletion, remote revoke, scheduled auth, complete history/resume, Android acceptance and clinical review. Statuses below supersede older historical claims.
+
+### Publication and backend verification
+
+- GitHub terminal push lacked credentials; published the identical reviewed tree through the GitHub connector as remote implementation commit `64276fe3a0b5b2af5333c8853cd3c1c9d623772d`. The earlier `b6f526e` reference is a local checkpoint, not a remote commit. PR: https://github.com/3bHussein/Whoop-Intelligence-/pull/1.
+- Deployed `whoop-data` **v3** and `whoop-account` **v2** to the named project; start/callback remain their existing deployed versions. Existing encrypted credentials were preserved.
+- **VERIFIED live:** missing bearer and deliberately invalid bearer return HTTP 401 on all three authenticated endpoints (six requests executed). No authenticated user was impersonated; no real health export/disconnect request was sent.
+- Migration history and advisors rechecked: new sync table has RLS=true, anon SELECT=false, authenticated SELECT=false. Scheduler/webhook and destructive acceptance remain open.
+- Follow-up hardening clears in-memory personal records when authenticated account identity changes. Added browser checks for bilingual email-link form, privacy language and rejection of an unexpected OAuth redirect host. Job timeouts prevent unbounded CI runs.
