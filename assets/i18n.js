@@ -16,3 +16,6 @@ Object.assign(copy.ar,{reportPoints:'نقطة',reportUTC:'تاريخ UTC — ف�
 
 Object.assign(copy.ar,{rhr:'RHR — نبض القلب أثناء الراحة',hrv:'HRV — تباين معدل ضربات القلب'});
 Object.assign(copy.en,{rhr:'RHR — Resting heart rate',hrv:'HRV — Heart rate variability'});
+
+Object.assign(copy.ar,{insights:'افهم بياناتك'});
+Object.assign(copy.en,{insights:'Understand my data'});
