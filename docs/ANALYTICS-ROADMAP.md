@@ -133,3 +133,4 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - DONE: Personal historical range for HRV/RHR with no clinical normality claim; neutral single-metric changes, collapsed generic actions, remove repeated definitions.
 - VERIFIED locally: 52 Node tests and 7 Chromium scenarios. Cross-browser CI/deployment NEEDS TEST until release evidence is recorded.
 - NEEDS TEST: Real-account Arabic mobile acceptance and qualified interpretation review. Existing backend/scheduler blockers unchanged.
+- VERIFIED release: PR #5 / implementation `08ba631568cdedf5ed3ef3adc0c9e490b370b8c2`; 52 Node tests and 21 cross-browser scenarios passed in run `39144217437`. Pages run `39144387373` succeeded; production assets matched source hashes. Real-account acceptance remains NEEDS TEST.

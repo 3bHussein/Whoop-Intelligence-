@@ -174,3 +174,8 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - DONE: HRV/resting pulse show earlier observed minimum–maximum with reference count; this is explicitly a historical range, never a medical normal range. Individual directional changes no longer get an attention color on their own. Removed duplicate metric definitions and collapsed generic action paragraphs.
 - VERIFIED locally: 52 Node tests, 7 Chromium browser scenarios including bilingual relationship rendering and hidden technical details. Arabic mobile sleep-card screenshot inspected. No backend changes, credentials or account-data mutations.
 - NEEDS TEST: Cross-browser CI, deployment, real-account acceptance and clinical/sports review. Prior integration blockers remain unchanged.
+
+### Plain findings release evidence
+- VERIFIED: implementation `08ba631568cdedf5ed3ef3adc0c9e490b370b8c2`, [PR #5](https://github.com/3bHussein/Whoop-Intelligence-/pull/5), merge `6d67bf67e6a27c713ed1d3c9612638a1079518cc`.
+- VERIFIED: [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39144217437) passed 52 Node tests and 21 scenarios across Chromium/Firefox/WebKit. [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39144387373) succeeded; five public JS/CSS assets fetched with HTTP 200 and exact local-source hashes.
+- NEEDS TEST: Real-account user acceptance and qualified clinical/sports interpretation review. No private health records used in browser fixtures. Existing integration blockers unchanged.
