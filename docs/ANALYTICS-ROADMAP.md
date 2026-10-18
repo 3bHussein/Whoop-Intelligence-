@@ -126,3 +126,10 @@ Daily/report design is now **DONE / VERIFIED** through [PR #3 CI](https://github
 - **NEEDS TEST:** Cross-browser release CI and user acceptance. Qualified clinical/sports review remains open; explanatory rules are educational and source-linked, not a validated medical decision system.
 
 Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39142908610) (46 Node tests and 21 cross-browser scenarios), successful deployment and production hash checks. User acceptance and qualified clinical/sports review remain **NEEDS TEST**.
+
+### Plain personal findings follow-up
+- DONE: Replace prominent correlation jargon with observed two-group median comparisons, actual values, group counts and plain-language direction.
+- DONE: Require 7 matched days and 3 per group; exclude median ties; preserve exact preceding-day alignment and sensitivity caveats.
+- DONE: Personal historical range for HRV/RHR with no clinical normality claim; neutral single-metric changes, collapsed generic actions, remove repeated definitions.
+- VERIFIED locally: 52 Node tests and 7 Chromium scenarios. Cross-browser CI/deployment NEEDS TEST until release evidence is recorded.
+- NEEDS TEST: Real-account Arabic mobile acceptance and qualified interpretation review. Existing backend/scheduler blockers unchanged.
