@@ -59,3 +59,11 @@ Simple/Advanced shipped in [PR #2](https://github.com/3bHussein/Whoop-Intelligen
 ## Daily, weekly and monthly reports
 
 [Today’s report](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html?period=1#reports) presents only the current WHOOP-local day's scored observations, compared with the preceding 30 calendar days (minimum seven earlier observations). Missing today remains missing, never replaced with yesterday. Today remains provisional because activity load can change. The redesigned report includes clear metric cards, completeness, expandable evidence, Simple/Advanced detail and print/PDF styling. Weekly/monthly comparisons use disjoint equal-length windows, with at least three observations in each. No WHOOP offset available means an explicit UTC fallback label.
+
+## Meaning and practical context
+
+Simple cards and reports now explain what a reading may mean and offer a conservative next step, using the **same period value and reference shown on the card**. A weekly median is never interpreted using a different latest-day comparison. The main focus can prioritize short recorded main sleep, a recovery comparison, or a same-day HRV/RHR pattern; it does not diagnose conditions or clear exercise.
+
+Sleep context uses the [CDC general adult sleep reference](https://www.cdc.gov/sleep/about/) of at least seven hours, explicitly labeled general guidance, not an individualized sleep target or a sleep-debt calculation. WHOOP main sleep excludes naps; the UI says so. Reaching seven hours does not prove adequate quality or individual need. WHOOP Recovery is identified as a composite score, not a percentage of restored energy. Personal HRV/RHR interpretations require sufficient reference observations and use no universal healthy cutoffs.
+
+Sources reviewed 18 October 2026: [WHOOP Recovery](https://www.whoop.com/us/en/thelocker/how-does-whoop-recovery-work-101/), [HRV context](https://www.whoop.com/us/en/thelocker/increase-hrv-heart-rate-variability/), [WHOOP metric definitions](https://www.whoop.com/us/en/thelocker/member-averages-recovery-strain-sleep-hrv/), and CDC above. Guidance is educational, deterministic and context-dependent; a clinician/sports professional review remains open before commercial claims.

@@ -150,3 +150,14 @@ User feedback: the design works well, but statistical detail is overwhelming wit
 - **VERIFIED:** [PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39141456638) executed 37 Node tests and 21 browser scenarios across Chromium/Firefox/WebKit successfully, including daily direct URL, print visibility, both presentation modes and mobile RTL/LTR.
 - **DONE / VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39141590049) succeeded. Five changed public HTML/JS/CSS files fetched with HTTP 200 and exact source hashes; daily query entry also returned HTTP 200.
 - Arabic mobile report screenshot visually reviewed. Fixture verification is not real-account or physical Android acceptance; those remain **NEEDS TEST**. No health data, credentials or backend state modified.
+
+## Meaning-first interpretation batch — 2026-10-18
+
+User feedback: definitions and higher/lower labels still did not explain the meaning of personal readings.
+
+- **DONE:** Visible data-triggered meaning and practical-action blocks for sleep, recovery, HRV, resting pulse, strain, efficiency and consistency, in Arabic and English. Same engine in Simple cards, Advanced interpretations and reports.
+- **DONE:** Fixed mixed-window comparison: the card's displayed period median is now compared with its own previous window, not with a separate latest reading. Daily uses its prior 30-day baseline and sample safeguards.
+- **DONE:** Main focus can highlight short main sleep even when improved from personal history; eligible combined HRV-down/RHR-up context is limited to the same day. Neither improvement nor reaching a general sleep reference is presented as training clearance or proof of enough recovery.
+- **DONE:** Source-linked CDC general adult sleep reference, clearly separated from individual need and 24-hour sleep including naps. Recovery is explained as WHOOP's composite score, not literal restored-body/energy percentage. No universal HRV/RHR cutoffs introduced.
+- **VERIFIED locally:** 46 Node tests and 7 Chromium scenarios passed, including the final composite-reference regression test. Includes opposing latest-vs-median direction, insufficient history, short-but-improved sleep, missing data, contextual strain and bilingual rules. UI asserts visible meaning/actions and absence of the mismatched latest-reading label.
+- **NEEDS TEST:** Cross-browser CI, deployment and real user acceptance. Source review references are in README. Clinical/sports expert review remains open. No backend, credential or health-data mutation.
