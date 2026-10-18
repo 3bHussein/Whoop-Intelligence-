@@ -1,0 +1,37 @@
+# WHOOP Intelligence — Analytics roadmap
+
+## Purpose and safety
+Bilingual Arabic/English personal health and sports analytics. The system provides educational wellness interpretations, not medical diagnosis, treatment, ECG interpretation, or fitness clearance. Never infer disease from RHR/HRV/SpO2 alone. Show uncertainty, missingness, calibration, provenance, and trend context.
+
+## Phase 1 — shipped foundation (2026-10-18)
+- Separate Supabase project; WHOOP OAuth completed for one account.
+- Backend `whoop-data` supports signed-in, user-scoped WHOOP v2 sync (recovery, cycles, sleep, workouts) and reads of saved records.
+- Data cache `public.whoop_health_records`: RLS enabled, no anon/authenticated table grants, service-only access.
+- Upsert prevents duplicate records; initial manual sync limited to 30 days, 2 pages per category.
+- Bilingual analysis screen (`analysis.html`): RHR, HRV, Recovery, Sleep duration, Strain, personal median context, simple interpretation, missing data messaging.
+- Caveat: no real sync has yet been completed or validated. Refresh-token rotation and automatic scheduled sync are NOT implemented. 
+
+## Phase 2 — critical reliability
+- Validate WHOOP schemas and individual data returned by real sync, including any failures.
+- Secure per-user refresh-token locks and atomic rotation, 401/429 backoff and resuming after interruptions.
+- Incremental pagination, full-history backfill on demand, UTC-aware timestamps and source update tracking.
+- Record deletion/disconnect and WHOOP token revoke; authenticated data export and account deletion flow.
+- Webhook signature validation plus retry/idempotent processing, manual polling fallback.
+- Automated tests for OAuth expiry, missing scope, unavailable score, missing stage summary, duplicate records, RTL, and isolation between users.
+
+## Phase 3 — detailed evidence-based interpretation
+- Baseline: 14–30 scored days; display baseline coverage, median, changes and confidence and longer trends.
+- Heart health indicators: RHR, HRV, available SpO2 and skin temperature; avoid medical cut-offs unless reviewed against appropriate validated clinical guidelines.
+- Recovery + sleep: duration, sleep timing regularity, stage distribution, performance, quality and how changes correlate with recovery.
+- Sports: strain by day, workout profiles, load vs recovery, fatigue context and conservative deload suggestions; no automatic 'cleared to train' claims.
+- Correlations: historical associations only, minimum data thresholds, avoid causal inference.
+- Daily/weekly/monthly reports in plain Arabic and English: observed data, probable explanations, action ideas, limitations and escalation flags.
+- Accessible mobile UX, chart labels in both languages, data dictionary and links to source metrics.
+
+## Phase 4 — launch hygiene
+- Privacy review and accurate live retention/deletion terms; validated public links.
+- Rate-limit monitoring, backfill quotas, encrypted token rotation, alerts and audit log retention.
+- Validate all interpretations with qualified clinicians and sports scientists before commercial claims.
+
+## Current known limits
+Current access-token expiry can block sync; reconnect is a temporary workaround until atomic refresh is built. Do not claim analysis is medically certified.
