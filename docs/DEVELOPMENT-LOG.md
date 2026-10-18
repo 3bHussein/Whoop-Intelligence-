@@ -118,3 +118,13 @@ Remaining priorities: verify PR CI; deploy checked data/account functions; perfo
 ### Delivery links
 
 [Production dashboard](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html) · [Merged PR](https://github.com/3bHussein/Whoop-Intelligence-/pull/1) · [Security review](SECURITY-REVIEW.md) · [Current roadmap](ANALYTICS-ROADMAP.md).
+
+## Simple / Advanced presentation batch — 2026-10-18
+
+User feedback: the design works well, but statistical detail is overwhelming without specialist knowledge.
+
+- **DONE:** Simple is the new default. Three overview cards (Recovery, Sleep, Strain), a short personal recovery comparison, period labels and plain metric definitions. No charts or correlation coefficients appear in Simple.
+- **DONE:** Calculation evidence expands only on request and retains actual latest/baseline values, differences, dates and sample counts. Insufficient/stale readings cannot produce a positive/negative interpretation. Labels explicitly distinguish latest-reading comparisons from the displayed period median.
+- **DONE:** Advanced restores the complete charts/relationships/insights and adds period means. Display selection persists across reload, language and page navigation, with accessible pressed-state controls.
+- **VERIFIED locally:** 30 Node tests passed (26 existing + 4 presentation tests); 7 Chromium scenarios passed, extended to check default Simple, at most three overview cards, hidden charts, closed evidence, mode persistence, restored Advanced and bilingual behavior.
+- **NEEDS TEST:** PR cross-browser CI and final deployment; real Android acceptance. No medical readiness recommendations or new universal thresholds introduced. WHOOP credentials, health records and database untouched.
