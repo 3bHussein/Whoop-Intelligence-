@@ -179,3 +179,9 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - VERIFIED: implementation `08ba631568cdedf5ed3ef3adc0c9e490b370b8c2`, [PR #5](https://github.com/3bHussein/Whoop-Intelligence-/pull/5), merge `6d67bf67e6a27c713ed1d3c9612638a1079518cc`.
 - VERIFIED: [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39144217437) passed 52 Node tests and 21 scenarios across Chromium/Firefox/WebKit. [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39144387373) succeeded; five public JS/CSS assets fetched with HTTP 200 and exact local-source hashes.
 - NEEDS TEST: Real-account user acceptance and qualified clinical/sports interpretation review. No private health records used in browser fixtures. Existing integration blockers unchanged.
+
+## 2026-10-18 — Abbreviations with readable Arabic meanings
+- DONE: Preserve RHR and HRV in metric labels; header link opens a bilingual glossary of 16 terms/units, full English names, Arabic names and plain explanations. Includes VO₂ max, SpO₂, HR, RR, REM, SWS, RMSSD, bpm, ms, mL/kg/min, h/min, r, UTC and PDF.
+- DONE: Explicitly distinguish definition-only VO₂ max/SpO₂/RR from available personal readings; no source data or metric values added. RTL abbreviations isolated with bdi dir=ltr. Definitions reviewed against primary WHOOP references linked in README.
+- VERIFIED locally: 55 Node tests and 7 Chromium scenarios; new glossary content, bilingual labels and browser interaction tests.
+- NEEDS TEST: Cross-browser CI/deployment and user acceptance. No backend/account data changes.

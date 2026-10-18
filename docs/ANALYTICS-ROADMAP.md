@@ -134,3 +134,8 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - VERIFIED locally: 52 Node tests and 7 Chromium scenarios. Cross-browser CI/deployment NEEDS TEST until release evidence is recorded.
 - NEEDS TEST: Real-account Arabic mobile acceptance and qualified interpretation review. Existing backend/scheduler blockers unchanged.
 - VERIFIED release: PR #5 / implementation `08ba631568cdedf5ed3ef3adc0c9e490b370b8c2`; 52 Node tests and 21 cross-browser scenarios passed in run `39144217437`. Pages run `39144387373` succeeded; production assets matched source hashes. Real-account acceptance remains NEEDS TEST.
+
+### Abbreviations in both languages
+- DONE: RHR/HRV retained beside translated labels; accessible header link to a collapsed bilingual 16-term/unit guide; Latin text uses LTR isolation in Arabic.
+- DONE: VO₂ max and SpO₂ defined with explicit unavailability, no invented readings or new analytics.
+- VERIFIED locally: 55 Node tests and 7 Chromium scenarios; CI/deployment NEEDS TEST until release evidence below.
