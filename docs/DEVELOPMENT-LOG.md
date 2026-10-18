@@ -63,3 +63,5 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 4. Keep ProgressXX untouched.
 
 - 2026-10-18: V2 first UI iteration deployed to main (`cfd96de`): refined responsive cards and added a personalized overview using saved WHOOP recovery measurements, previous medians and sample-size warning. **NEEDS TEST:** verify mobile RTL, real record chronology and full history coverage; does not yet constitute a complete personal insight engine.
+
+- 2026-10-18: Added responsive 7/30-day RHR, HRV and Recovery timeline charts to analysis.html (commit 295a4e3). Deployed, with browser validation pending.
