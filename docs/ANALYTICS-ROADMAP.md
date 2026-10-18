@@ -116,3 +116,11 @@ Simple/Advanced is now **DONE / VERIFIED** by [PR #2 CI](https://github.com/3bHu
 - **NEEDS TEST:** Cross-browser CI/deployment and real-account Android acceptance. Scheduler/token-expiry/destructive testing remain separate open tasks.
 
 Daily/report design is now **DONE / VERIFIED** through [PR #3 CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39141456638) (37 Node tests, 21 cross-browser scenarios), successful Pages deployment and production hash verification. Daily entry: [today's report](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html?period=1#reports). Physical-device/real-account acceptance remains **NEEDS TEST**.
+
+## Meaningful interpretations — 2026-10-18
+
+- **DONE:** Visible "What this means" and "Practical next step" for every simple metric and report card; advanced interpretation uses the same engine.
+- **DONE:** Corrected period-median/latest-reading mismatch reported in screenshots. The displayed value, reference, difference and explanation now share the same report window.
+- **DONE:** Personal focus prioritizes recorded short main sleep or eligible same-day HRV/RHR context; recovery percentage is explained as a composite score, not literal percent restoration.
+- **DONE:** General CDC adult sleep reference is separated from personal baseline/need, with explicit main-sleep/naps limitation. HRV/RHR use no invented universal cutoffs. Guidance does not diagnose or provide exercise clearance.
+- **NEEDS TEST:** Cross-browser release CI and user acceptance. Qualified clinical/sports review remains open; explanatory rules are educational and source-linked, not a validated medical decision system.
