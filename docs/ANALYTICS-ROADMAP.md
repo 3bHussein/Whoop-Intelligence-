@@ -1,5 +1,22 @@
 # WHOOP Intelligence — Analytics roadmap
 
+## Current completion snapshot — 2026-10-18 privacy batch
+This snapshot supersedes historical statements below; VERIFIED always names its scope.
+
+| Area | Status | Remaining work |
+|---|---|---|
+| Bilingual dashboard, simple/advanced, today/weekly/monthly reports, glossary | VERIFIED | Real Android/user acceptance |
+| Personal statistics and descriptive group comparisons | VERIFIED (fixtures) | Qualified clinical/sports review; no medical certification claimed |
+| User isolation, OAuth state owner/replay and encrypted storage | VERIFIED (handler fixtures + live grant metadata) | Two genuine disposable authenticated accounts against deployed APIs |
+| Refresh rotation/lease and rate limits | VERIFIED (fixtures) | Genuine expired WHOOP credential end-to-end; crash-between-rotation-and-persistence recovery |
+| Export, confirmed local deletion and remote revoke response handling | DONE; fixture VERIFIED | Live disposable WHOOP revoke/deletion; transactional deletion versus in-flight sync |
+| Closed-browser synchronization | BLOCKED | Secure authenticated scheduler provisioning |
+| Resumable full history / webhooks / operational alerts / restore drill | TODO | Persisted cursor, authenticity/retry, alerting/retention and backup recovery |
+| Public multi-user launch | TODO | Finish real-account acceptance, privacy/retention review and confirm WHOOP app tier |
+
+Next order: disposable-account acceptance → sync/deletion concurrency → secure scheduler → resumable history and operations. Never delete/disconnect the owner's existing account for tests.
+
+
 ## Purpose and safety
 Bilingual Arabic/English personal health and sports analytics. The system provides educational wellness interpretations, not medical diagnosis, treatment, ECG interpretation, or fitness clearance. Never infer disease from RHR/HRV/SpO2 alone. Show uncertainty, missingness, calibration, provenance, and trend context.
 
@@ -140,3 +157,11 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - DONE: VO₂ max and SpO₂ defined with explicit unavailability, no invented readings or new analytics.
 - VERIFIED locally: 55 Node tests and 7 Chromium scenarios; CI/deployment NEEDS TEST until release evidence below.
 - VERIFIED release: implementation `8b8b1ababa956a150b0dc567a8c647796df085b1`, PR #6; CI `39144889744` passed 55 Node tests / 21 browser scenarios; Pages `39145040195` succeeded with production source hash verification. User acceptance remains NEEDS TEST.
+
+
+## Privacy and isolation verification batch
+- DONE: Confirmed disconnect attempts the official WHOOP DELETE /developer/v2/user/access with a valid stored access token before local erasure. Only HTTP 204 confirms remote revocation; expired/rejected/rate-limited/network outcomes remain explicitly unverified, with manual WHOOP-settings instructions.
+- DONE: Pending OAuth-state deletion errors no longer report success. Privacy UI preserves outcome text after status refresh, with bilingual success/manual-action messaging.
+- VERIFIED locally: 69 Node tests / 9 Chromium scenarios. Includes forged owner/metadata, scoped read/status/export/delete, encrypted OAuth owner binding/replay, successful encrypted refresh rotation and lease/rate-limit behavior, download/cancel/revoke-result UI. All destructive paths are fixtures only.
+- VERIFIED live (read-only metadata): RLS enabled; anon/authenticated SELECT and DELETE denied on health records, OAuth tokens/pending and sync history.
+- NEEDS TEST: CI/deployment, two real users, genuine expiry and disposable WHOOP revoke/deletion. Deletion is still sequential, not transactional; in-flight sync/callback races remain open.
