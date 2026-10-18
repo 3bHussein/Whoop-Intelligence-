@@ -67,3 +67,5 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 - 2026-10-18: Added responsive 7/30-day RHR, HRV and Recovery timeline charts to analysis.html (commit 295a4e3). Deployed, with browser validation pending.
 
 - 2026-10-18: Implemented initial per-account sleep vs Recovery association on analysis.html (commit 433982b). Matches sleep end and recovery dates in UTC, excludes naps, requires 7 matched dates and nonzero variance. Correlation is descriptive, not causal. NEEDS TEST: WHOOP timestamps and timezone alignment, duplicated days, real-user browser QA; no inference if insufficient observations.
+
+- 2026-10-18: Deployed a personalized prior-day Strain vs next-day Recovery association (commit d78d0e2). Requires >=7 valid daily pairs. Uses UTC matching, so remains NEEDS TEST for WHOOP timezone correctness, user-data browser behavior, and interpretation; no causal or clinical claims.
