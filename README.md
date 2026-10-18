@@ -45,3 +45,7 @@ GitHub Pages runs tests before deployment and publishes only HTML + `assets/`, e
 - Refresh uses encrypted credentials, a per-user lease and owner-conditional persistence. A crash between WHOOP rotation and persistence may require reconnecting. Real expired-token refresh still needs acceptance testing.
 - Local disconnect deletes cached health records, local tokens, pending states and sync history. Remote WHOOP revocation, transactional deletion with concurrent sync protection, Supabase login deletion and backup retention are still pending. Never test deletion using the existing real connection.
 - See [Development Log](docs/DEVELOPMENT-LOG.md), [Roadmap](docs/ANALYTICS-ROADMAP.md) and [Security audit](docs/SECURITY-REVIEW.md) for exact verification evidence and remaining work.
+
+## V2 release verification
+
+[PR #1](https://github.com/3bHussein/Whoop-Intelligence-/pull/1) merged and [deployed successfully](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138948237). [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138835902) executed 26 Node tests and 21 browser scenarios across Chromium, Firefox and WebKit. Production asset hashes match the checked source. Real-account expiry, irreversible deletion and physical-device acceptance remain separate open checks.

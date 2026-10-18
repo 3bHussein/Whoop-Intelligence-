@@ -92,3 +92,7 @@ Current access-token expiry can block sync; reconnect is a temporary workaround 
 ### Integration limits
 
 The dashboard/export read pagination cap is 20,000 rows (per type for dashboard), explicit error on overflow. Sync caps each type at 20 pages with a shared 70-second budget; caps/repeated cursor/rate limits are surfaced as incomplete, not success. Resuming an incomplete full repair currently means rerunning manual sync; there is no persisted pagination cursor. Sync-history rows begin at V2 and are not a retroactive log of prior operations. A stale running row is abandoned after two minutes on the next sync attempt. A crash after WHOOP refresh rotation but before persistence may still require reauthorization.
+
+### Release validation
+
+M6 automated quality is now **VERIFIED** for the executed fixture suite: 26 Node tests and 21 browser scenarios, all three engines, [successful PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138835902). M1 public deployment is **DONE / VERIFIED** via successful [Pages run](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138948237) and exact production asset hashes. These results do not close real-account expiry/deletion, physical Android acceptance or clinical review. Current source is merged through PR #1; detailed hashes/results are in Development Log.

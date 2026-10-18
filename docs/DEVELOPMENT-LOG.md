@@ -28,20 +28,20 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 ## Prioritized roadmap / المطلوب وما تبقى
 | Priority | ID | Task | Status | Acceptance criteria |
 |---|---|---|---|---|
-| P0 | P-001 | Redesign Overview mobile-first in a polished WHOOP-inspired but original visual system | IN PROGRESS | Arabic RTL/English LTR, clear hierarchy, polished responsive cards and charts |
-| P0 | P-002 | Personal insight engine, never generic filler | IN PROGRESS | Every claim cites actual record window, calculated values, comparison and data-coverage confidence; no data = explicit insufficient evidence |
-| P0 | P-003 | Trend charts and timeline based on measurement date rather than fetch date | TODO | 7/30-day trend visualization for RHR, HRV, sleep, strain, recovery; correct chronological sorting |
+| P0 | P-001 | Redesign Overview mobile-first in a polished WHOOP-inspired but original visual system | VERIFIED | Arabic RTL/English LTR, clear hierarchy, polished responsive cards and charts |
+| P0 | P-002 | Personal insight engine, never generic filler | VERIFIED | Every claim cites actual record window, calculated values, comparison and data-coverage confidence; no data = explicit insufficient evidence |
+| P0 | P-003 | Trend charts and timeline based on measurement date rather than fetch date | VERIFIED | 7/30-day trend visualization for RHR, HRV, sleep, strain, recovery; correct chronological sorting |
 | P0 | P-004 | Verify paginated sync and refresh on real user data | NEEDS TEST | Check API errors, duplicates, gap days, expiries and rotation |
 | P0 | P-005 | Comprehensive health + training insight design | TODO | Clear, personalized explanations, no unsupported diagnostic claims, conservative training guidance |
 | P1 | P-006 | 24/7 secure server-side scheduler | BLOCKED | Need authenticated server scheduler, safe credentials, lock, backoff, audit, monitoring; `pg_cron`/`pg_net` currently unavailable |
-| P1 | P-007 | Sleep + recovery + training correlations | TODO | Joined dates, minimum sample sizes, uncertainty, no causal claims |
-| P1 | P-008 | Reports redesign, shareable PDF / print | TODO | Mobile polished weekly/monthly reports with metric provenance |
+| P1 | P-007 | Sleep + recovery + training correlations | VERIFIED | Joined dates, minimum sample sizes, uncertainty, no causal claims |
+| P1 | P-008 | Reports redesign, shareable PDF / print | DONE | Mobile polished weekly/monthly reports with metric provenance |
 | P1 | P-009 | Full-history backfill, complete pagination and safe rate limits | TODO | Works past 30-day cap with reliable resume |
 | P1 | P-010 | Complete export and WHOOP OAuth revocation | TODO | Full downloadable history and verifiable disconnect/revoke |
 | P1 | P-011 | Clinical/sports domain expert review | TODO | Review safety, definitions, thresholds, disclaimers before production release |
-| P1 | P-012 | Automated RTL, mobile, auth, browser, analytics and regression tests | TODO | Passing CI and manual Android acceptance |
+| P1 | P-012 | Automated RTL, mobile, auth, browser, analytics and regression tests | VERIFIED | Passing CI and manual Android acceptance |
 | P2 | P-013 | Webhook-driven event sync | TODO | Signature verification, idempotency, retries and documented scopes |
-| P2 | P-014 | Settings, accessibility, performance improvements | TODO | Localized settings, chart accessibility and performance QA |
+| P2 | P-014 | Settings, accessibility, performance improvements | DONE | Localized settings, chart accessibility and performance QA |
 
 ## Analytics requirements — strict personalized approach
 - Never show fabricated demo values as real metrics.
@@ -104,3 +104,17 @@ Remaining priorities: verify PR CI; deploy checked data/account functions; perfo
 - **VERIFIED live:** missing bearer and deliberately invalid bearer return HTTP 401 on all three authenticated endpoints (six requests executed). No authenticated user was impersonated; no real health export/disconnect request was sent.
 - Migration history and advisors rechecked: new sync table has RLS=true, anon SELECT=false, authenticated SELECT=false. Scheduler/webhook and destructive acceptance remain open.
 - Follow-up hardening clears in-memory personal records when authenticated account identity changes. Added browser checks for bilingual email-link form, privacy language and rejection of an unexpected OAuth redirect host. Job timeouts prevent unbounded CI runs.
+
+## Release evidence — WHOOP Intelligence V2
+
+- **DONE / production:** PR #1 merged as `d9fe9735c035abaf2f1b3b472d2d536a7c1f3578`; implementation `64276fe3a0b5b2af5333c8853cd3c1c9d623772d`; account-state/browser hardening `5a0cdcf3a004e5d238d6d9c0533abf9ef30609bd`.
+- **VERIFIED:** [final PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138835902): 26 Node tests and **21 executed browser scenarios across Chromium/Firefox/WebKit**, including mobile/desktop AR/EN, anonymous behavior, sign-in form and OAuth host validation.
+- **VERIFIED:** [merged-main CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138948214) succeeded.
+- **VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138948237) succeeded. Nine public HTML/JS/CSS files were fetched from production with HTTP 200 and byte-hash equality against the tested source. Pinned browser SDK independently returned HTTP 200.
+- **VERIFIED live source shape:** all 30 stored recovery records match both sleep_id and cycle_id; none of those matched sleeps is a nap; all have the three scored sleep-stage fields. This was an aggregate-only read, not publication of personal health values. No-signal field was absent, reinforcing the use of actual stage totals rather than assuming missing signal time is zero.
+- Mobile RTL screenshot visually reviewed after responsive tests. A real signed-in browser session and actual Android device acceptance are still **NEEDS TEST**; fixture tests do not prove the current account's full 62-day sync or true expired-token rotation.
+- No destructive live tests, disconnection, real OAuth revocation or cross-project changes were performed. Refresh-failure-before-sync monitoring, persistent resume, transactional deletion, backup retention and clinical review remain open. The sync history covers API sync attempts after successful token preparation; it is not a complete authentication audit.
+
+### Delivery links
+
+[Production dashboard](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html) · [Merged PR](https://github.com/3bHussein/Whoop-Intelligence-/pull/1) · [Security review](SECURITY-REVIEW.md) · [Current roadmap](ANALYTICS-ROADMAP.md).
