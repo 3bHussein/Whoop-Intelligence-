@@ -41,3 +41,10 @@ Current access-token expiry can block sync; reconnect is a temporary workaround 
 - The refresh protocol is deployed but remains **unverified against a genuinely expired access token**. Refresh can still require reauthorization if WHOOP rotates tokens and a network/database failure occurs between exchange and persistence.
 - Manual data sync is available. Background scheduler, webhook verification, full historical backfill, deletion and commercial clinical review remain pending.
 - Backend lock expires after 45 seconds; lock prevents most concurrent refresh attempts, while production-strength crash recovery and durable idempotency are additional work.
+
+## 2026-10-18 — Session-based auto-sync
+- `analysis.html` now attempts WHOOP synchronization automatically on opening the page and when returning to the tab, if 30 minutes elapsed since the last fully successful manual/automatic sync.
+- While the page remains open, a five-minute timer checks whether a sync is due; requests are throttled to a minimum 30-minute interval after a successful sync.
+- Partial WHOOP failures are surfaced; they do not count as a successful sync.
+- This is **client-session auto-sync only**. It does not run while the browser is closed, and there is no scheduled backend job or cron yet.
+- Outstanding: server-driven schedules, validated expired-token refresh, multi-device sync timestamp coordination, pagination completeness, privacy deletion and medical review.
