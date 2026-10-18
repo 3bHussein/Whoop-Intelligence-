@@ -69,3 +69,30 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 - 2026-10-18: Implemented initial per-account sleep vs Recovery association on analysis.html (commit 433982b). Matches sleep end and recovery dates in UTC, excludes naps, requires 7 matched dates and nonzero variance. Correlation is descriptive, not causal. NEEDS TEST: WHOOP timestamps and timezone alignment, duplicated days, real-user browser QA; no inference if insufficient observations.
 
 - 2026-10-18: Deployed a personalized prior-day Strain vs next-day Recovery association (commit d78d0e2). Requires >=7 valid daily pairs. Uses UTC matching, so remains NEEDS TEST for WHOOP timezone correctness, user-data browser behavior, and interpretation; no causal or clinical claims.
+
+## V2 implementation batch — 2026-10-18
+
+Implementation commit: `b6f526e` (dashboard + analytics + protocol + tests; followed by documentation/release commits).
+
+| Area | Status | Evidence |
+|---|---|---|
+| Eight-section responsive redesign | VERIFIED | Executed Chromium fixture tests at 390/1440 px in AR/EN, navigation, no page overflow, charts, table, sync and anonymous state; screenshot inspected |
+| Pure personalized analytics | VERIFIED | Executed calculation fixtures, median/baseline/coverage, 7/30 calendar windows, source chronology, exact lag alignment, missingness and sample safeguards |
+| Five relationships | VERIFIED | Fixture correlation/alignment tests; minimum 7 variable pairs, no causal claims, leave-one-out sensitivity warning; not clinically validated |
+| Sleep duration/efficiency | VERIFIED | Source-stage or bed/awake/no-signal calculation; no fabricated missing values; efficiency source-only |
+| Sync protocol | VERIFIED | Fixtures traverse >2 pages, detect cursor cycles, surface caps/401, honor short Retry-After and stop on long limits |
+| Refresh rotation | NEEDS TEST | Runtime fixture verifies fresh credential under lock, owner check, persistence-failure release; genuinely expired WHOOP token not tested |
+| Service-only sync history | DONE | Migration `20261018145719` applied; RLS + denied browser grants checked live; concurrent sync run uniqueness and abandoned-run cleanup implemented |
+| Export | VERIFIED | Fixture reads 1,203 rows beyond old 1,000 cap; Auth user scope tested; live export not performed |
+| Privacy text/account UI | DONE | Corrected stale claims, bilingual policy/account, versioned source; destructive flow not executed |
+| Background scheduler/webhooks | BLOCKED | pg_cron/pg_net absent; no provisioned scheduler authentication/webhook secret; existing session-only polling retained |
+| Full historical backfill | TODO | 62-day repair + bounded overlap implemented; unlimited history and persistent cursor resume remain |
+| Remote revoke / transactional deletion | TODO | Preserve existing account; needs disposable connection and concurrency-safe transaction/tombstone design |
+
+Executed locally: **26 Node tests PASS; 5 Chromium browser scenarios PASS**. These are fixture tests, not proof of real-account acceptance. Cross-browser local run encountered unavailable host dependencies; Firefox/WebKit validation is delegated to the new GitHub Actions workflow, with actual results to be recorded below. Local dependency installation failed due container uid/setgroups restrictions. No test is labeled PASS merely because it was written.
+
+Significant fixes: replaced `created_at`/UTC approximations with cycle/sleep IDs and recorded offsets; removed arbitrary recovery interpretation buckets; missing chart days remain gaps; source-only efficiency; authenticated read errors no longer silently become empty arrays; export no longer silently truncates at 1,000; refresh re-reads under the lease and reuses already-renewed access; sync failures do not advance client freshness. Static deployment now publishes only public assets.
+
+Database security inspection: original 7/7 tables had RLS and no anon/authenticated SELECT grants; the new eighth sync table matches that service-only design. Advisor's RLS/no-policy INFO notices are expected; leaked-password-protection WARN is documented without changing auth settings. No current health records, tokens, or connections were deleted. Other projects untouched.
+
+Remaining priorities: verify PR CI; deploy checked data/account functions; perform non-destructive unauthenticated denial checks; merge only after required CI; confirm Pages deployment. Then real-account acceptance (fresh read/sync, genuine expiry), disposable deletion, remote revoke, scheduled auth, complete history/resume, Android acceptance and clinical review. Statuses below supersede older historical claims.
