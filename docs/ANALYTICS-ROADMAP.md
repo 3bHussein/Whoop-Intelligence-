@@ -48,3 +48,11 @@ Current access-token expiry can block sync; reconnect is a temporary workaround 
 - Partial WHOOP failures are surfaced; they do not count as a successful sync.
 - This is **client-session auto-sync only**. It does not run while the browser is closed, and there is no scheduled backend job or cron yet.
 - Outstanding: server-driven schedules, validated expired-token refresh, multi-device sync timestamp coordination, pagination completeness, privacy deletion and medical review.
+
+## 2026-10-18 — Privacy controls
+- Deployed `whoop-account` Edge Function: authenticated connection status, recent-record JSON export (1,000 record cap), local record + token disconnection.
+- Published bilingual `data.html` UI and updated public privacy policy to reflect actual limitations.
+- Security: endpoint requires Supabase Auth bearer token, scopes database mutations to `user.id`, never returns OAuth tokens.
+- **Important:** remote WHOOP OAuth revocation is NOT yet implemented and export is not exhaustive beyond 1,000 rows.
+- Server-side scheduling was evaluated; pg_cron/pg_net were not installed. No scheduled job was deployed without safely provisioned service authentication. Browser-session auto-sync remains the current refresh mechanism.
+- Needs verification: actual export, deletion path (prefer disposable test connection rather than real account), server-side schedule authorization, and RLS/security review.
