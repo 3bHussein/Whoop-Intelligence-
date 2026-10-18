@@ -53,3 +53,5 @@ GitHub Pages runs tests before deployment and publishes only HTML + `assets/`, e
 ## Simple and advanced views
 
 The dashboard defaults to **Simple**: three key overview cards, a short personal recovery summary and sleep in hours/minutes. Metric definitions and calculation evidence expand on demand. **Advanced** preserves all charts, baselines, sample sizes, period averages, comparisons and relationships. The display preference is saved on this browser and survives refresh, language changes and navigation. Both views use the same authenticated records; display mode does not change calculations, synchronization or privacy controls.
+
+Simple/Advanced shipped in [PR #2](https://github.com/3bHussein/Whoop-Intelligence-/pull/2), with [30 Node tests and 21 cross-browser scenarios passing](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140053190).

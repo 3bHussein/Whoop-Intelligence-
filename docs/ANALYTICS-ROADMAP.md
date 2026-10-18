@@ -104,3 +104,5 @@ M6 automated quality is now **VERIFIED** for the executed fixture suite: 26 Node
 - **DONE:** Advanced mode retains the complete analysis and now also displays period means next to medians. Settings/export/deletion remain accessible in both modes.
 - **NEEDS TEST:** Real Android acceptance of text density and terminology. Automated test evidence and publication status are tracked in Development Log.
 - No backend/auth/database modification is included in this presentation update. Existing scheduler, remote revocation and destructive acceptance blockers remain unchanged.
+
+Simple/Advanced is now **DONE / VERIFIED** by [PR #2 CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140053190) (30 Node tests / 21 three-engine browser scenarios), successful Pages deployment and production asset hashes. Physical-device acceptance remains **NEEDS TEST**.

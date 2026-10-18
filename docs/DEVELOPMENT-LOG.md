@@ -128,3 +128,10 @@ User feedback: the design works well, but statistical detail is overwhelming wit
 - **DONE:** Advanced restores the complete charts/relationships/insights and adds period means. Display selection persists across reload, language and page navigation, with accessible pressed-state controls.
 - **VERIFIED locally:** 30 Node tests passed (26 existing + 4 presentation tests); 7 Chromium scenarios passed, extended to check default Simple, at most three overview cards, hidden charts, closed evidence, mode persistence, restored Advanced and bilingual behavior.
 - **NEEDS TEST:** PR cross-browser CI and final deployment; real Android acceptance. No medical readiness recommendations or new universal thresholds introduced. WHOOP credentials, health records and database untouched.
+
+### Simple/Advanced release verification
+
+- **VERIFIED:** implementation `0f1f61176d8ed183246b92b78414706f9ef1af86`; [PR #2](https://github.com/3bHussein/Whoop-Intelligence-/pull/2) merged as `f11e4b5c7b00a2599fcfa1f16f70adf1faea7277`.
+- **VERIFIED:** [PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140053190) passed: 30 Node tests and 21 browser scenarios across Chromium, Firefox and WebKit. Tests cover Simple default, hidden charts/collapsed evidence, persistent mode and language, Advanced chart restoration, navigation, anonymous state and existing auth regressions.
+- **DONE / VERIFIED:** [Pages deployment](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39140231870) succeeded. Production analysis page, dashboard module and new presentation module fetched with HTTP 200 and exact local-source hash matches.
+- Mobile Arabic screenshot visually inspected. **NEEDS TEST:** real Android/user acceptance of simplified wording; backend real-token/deletion/scheduler blockers remain documented separately. No backend or database changes in this batch.
