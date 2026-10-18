@@ -96,3 +96,11 @@ The dashboard/export read pagination cap is 20,000 rows (per type for dashboard)
 ### Release validation
 
 M6 automated quality is now **VERIFIED** for the executed fixture suite: 26 Node tests and 21 browser scenarios, all three engines, [successful PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138835902). M1 public deployment is **DONE / VERIFIED** via successful [Pages run](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39138948237) and exact production asset hashes. These results do not close real-account expiry/deletion, physical Android acceptance or clinical review. Current source is merged through PR #1; detailed hashes/results are in Development Log.
+
+## Plain-language experience — 2026-10-18
+
+- **DONE:** Simple/Advanced display switch with Simple default and persistent browser preference. Overview has three key metrics; section-specific simple views have at most three cards.
+- **DONE:** Short data-derived recovery summary, plain metric definitions, readable hours/minutes, and collapsed calculation evidence. Latest-reading comparisons are explicitly labeled separately from period-typical values.
+- **DONE:** Advanced mode retains the complete analysis and now also displays period means next to medians. Settings/export/deletion remain accessible in both modes.
+- **NEEDS TEST:** Real Android acceptance of text density and terminology. Automated test evidence and publication status are tracked in Development Log.
+- No backend/auth/database modification is included in this presentation update. Existing scheduler, remote revocation and destructive acceptance blockers remain unchanged.
