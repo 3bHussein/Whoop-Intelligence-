@@ -198,3 +198,10 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - VERIFIED read-only production metadata: all four private WHOOP tables have RLS, with anon/authenticated SELECT and DELETE denied. No health rows, token values or other Supabase projects read/changed.
 - NEEDS TEST: CI and deploy; two genuine user sessions, genuine expired WHOOP token and disposable remote revoke. Sequential deletion/callback/in-flight sync races, secure scheduler, persisted full-history cursor, operational backup/restore and clinical review remain open. Roadmap now begins with a current status table to avoid treating old notes as current blockers.
 - References: WHOOP API revokeUserOAuthAccess; Supabase auth.getUser docs; current Supabase changelog reviewed (TLS cipher deprecation affects obsolete clients; no relevant SDK upgrade needed for this batch).
+
+### Privacy/isolation release evidence
+- VERIFIED: implementation `bee1d304eaa267556048145873d29a2185dcb0d5`, [PR #7](https://github.com/3bHussein/Whoop-Intelligence-/pull/7), merge `65e93e5b4f6093d9309085193e43641ab31bf868`.
+- VERIFIED: [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39145771031) passed 69 Node tests / 27 browser scenarios across Chromium/Firefox/WebKit.
+- DONE / VERIFIED: deployed whoop-account version 3 only to jsfeybhgobmrydcfnyjg, preserving the existing function's verify_jwt=false and explicit auth.getUser authorization. Downloaded deployed source matches both local files. Missing/invalid bearer requests returned HTTP 401; no live destructive action invoked.
+- DONE / VERIFIED: [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39145940673) succeeded. data.html/privacy.html fetched with HTTP 200 and exact source hashes.
+- NEEDS TEST: Two real users, genuinely expired WHOOP token and disposable revoke/deletion. In-flight sync/callback versus sequential erasure remains an explicit limitation; no claim of full multi-user launch readiness.
