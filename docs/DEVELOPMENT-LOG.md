@@ -65,3 +65,5 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 - 2026-10-18: V2 first UI iteration deployed to main (`cfd96de`): refined responsive cards and added a personalized overview using saved WHOOP recovery measurements, previous medians and sample-size warning. **NEEDS TEST:** verify mobile RTL, real record chronology and full history coverage; does not yet constitute a complete personal insight engine.
 
 - 2026-10-18: Added responsive 7/30-day RHR, HRV and Recovery timeline charts to analysis.html (commit 295a4e3). Deployed, with browser validation pending.
+
+- 2026-10-18: Implemented initial per-account sleep vs Recovery association on analysis.html (commit 433982b). Matches sleep end and recovery dates in UTC, excludes naps, requires 7 matched dates and nonzero variance. Correlation is descriptive, not causal. NEEDS TEST: WHOOP timestamps and timezone alignment, duplicated days, real-user browser QA; no inference if insufficient observations.
