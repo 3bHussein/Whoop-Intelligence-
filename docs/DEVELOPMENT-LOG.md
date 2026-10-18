@@ -225,3 +225,9 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - DONE: Scored finished workout IDs are deduplicated; local source start dates align the selected window; future/invalid/unaligned/unfinished records excluded. Display count, recorded days, median/summed duration and median workout strain, explicitly separate from day strain. Absence does not imply inactivity.
 - VERIFIED locally: 84 Node tests / 9 Chromium scenarios. Includes midnight/ambiguous clocks, missing stages/naps, source-local workout dates, duplicate IDs, invalid/future/pending records, bilingual guide and all question interactions. Arabic mobile guide screenshot inspected.
 - NEEDS TEST: CI/deployment, real account acceptance and qualified review. This is openly labeled calculated answers, not free-form AI. No AI provider calls, backend/schema changes or health-data mutations. A real conversational provider needs separately configured server credentials and privacy/consent validation; no paid service enabled. No appointment/lab-service integration or copied Sino assets.
+
+### Question-led guide release evidence
+- VERIFIED: implementation `00d02a3c51d96475c08a41aedc6e76b73d66f373`, [PR #9](https://github.com/3bHussein/Whoop-Intelligence-/pull/9), merge `84fefe180b70db9a3299b7a70a7194b430ea0863`.
+- VERIFIED: [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39148050851) passed 84 Node tests and 27 Chromium/Firefox/WebKit scenarios. Arabic mobile question guide visually reviewed.
+- DONE / VERIFIED: [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39148198599) succeeded; guide/dashboard JS, CSS and i18n fetched HTTP 200 with exact source hashes.
+- NEEDS TEST: Real-account acceptance and qualified interpretation review. Free-form AI remains TODO requiring separately configured server-side provider/consent/validation; no external AI data transfer enabled. No backend or health-record mutation.
