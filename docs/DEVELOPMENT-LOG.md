@@ -28,8 +28,8 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 ## Prioritized roadmap / المطلوب وما تبقى
 | Priority | ID | Task | Status | Acceptance criteria |
 |---|---|---|---|---|
-| P0 | P-001 | Redesign Overview mobile-first in a polished WHOOP-inspired but original visual system | TODO | Arabic RTL/English LTR, clear hierarchy, polished responsive cards and charts |
-| P0 | P-002 | Personal insight engine, never generic filler | TODO | Every claim cites actual record window, calculated values, comparison and data-coverage confidence; no data = explicit insufficient evidence |
+| P0 | P-001 | Redesign Overview mobile-first in a polished WHOOP-inspired but original visual system | IN PROGRESS | Arabic RTL/English LTR, clear hierarchy, polished responsive cards and charts |
+| P0 | P-002 | Personal insight engine, never generic filler | IN PROGRESS | Every claim cites actual record window, calculated values, comparison and data-coverage confidence; no data = explicit insufficient evidence |
 | P0 | P-003 | Trend charts and timeline based on measurement date rather than fetch date | TODO | 7/30-day trend visualization for RHR, HRV, sleep, strain, recovery; correct chronological sorting |
 | P0 | P-004 | Verify paginated sync and refresh on real user data | NEEDS TEST | Check API errors, duplicates, gap days, expiries and rotation |
 | P0 | P-005 | Comprehensive health + training insight design | TODO | Clear, personalized explanations, no unsupported diagnostic claims, conservative training guidance |
@@ -61,3 +61,5 @@ Repository: https://github.com/3bHussein/Whoop-Intelligence-
 2. Move an item to DONE only after the code is deployed; mark VERIFIED only after tests/evidence.
 3. Record relevant commit IDs, tests run, failures, and outstanding risks.
 4. Keep ProgressXX untouched.
+
+- 2026-10-18: V2 first UI iteration deployed to main (`cfd96de`): refined responsive cards and added a personalized overview using saved WHOOP recovery measurements, previous medians and sample-size warning. **NEEDS TEST:** verify mobile RTL, real record chronology and full history coverage; does not yet constitute a complete personal insight engine.
