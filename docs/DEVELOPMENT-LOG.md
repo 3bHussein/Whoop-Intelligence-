@@ -185,3 +185,8 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - DONE: Explicitly distinguish definition-only VO₂ max/SpO₂/RR from available personal readings; no source data or metric values added. RTL abbreviations isolated with bdi dir=ltr. Definitions reviewed against primary WHOOP references linked in README.
 - VERIFIED locally: 55 Node tests and 7 Chromium scenarios; new glossary content, bilingual labels and browser interaction tests.
 - NEEDS TEST: Cross-browser CI/deployment and user acceptance. No backend/account data changes.
+
+### Abbreviations release evidence
+- VERIFIED: implementation `8b8b1ababa956a150b0dc567a8c647796df085b1`, [PR #6](https://github.com/3bHussein/Whoop-Intelligence-/pull/6), merge `a7b0537b5c1adacf4c23a2c824ca9e5f728b9357`.
+- VERIFIED: [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39144889744) passed 55 Node tests and 21 Chromium/Firefox/WebKit scenarios. [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39145040195) succeeded; analysis.html and four JS/CSS assets returned HTTP 200 with exact source hashes.
+- NEEDS TEST: Real-account user acceptance. Definitions are educational; no new personal VO₂ max, SpO₂ or RR readings are claimed. Existing infrastructure blockers unchanged.

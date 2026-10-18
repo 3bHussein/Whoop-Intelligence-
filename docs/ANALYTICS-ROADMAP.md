@@ -139,3 +139,4 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - DONE: RHR/HRV retained beside translated labels; accessible header link to a collapsed bilingual 16-term/unit guide; Latin text uses LTR isolation in Arabic.
 - DONE: VO₂ max and SpO₂ defined with explicit unavailability, no invented readings or new analytics.
 - VERIFIED locally: 55 Node tests and 7 Chromium scenarios; CI/deployment NEEDS TEST until release evidence below.
+- VERIFIED release: implementation `8b8b1ababa956a150b0dc567a8c647796df085b1`, PR #6; CI `39144889744` passed 55 Node tests / 21 browser scenarios; Pages `39145040195` succeeded with production source hash verification. User acceptance remains NEEDS TEST.
