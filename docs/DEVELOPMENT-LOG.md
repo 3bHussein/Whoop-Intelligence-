@@ -212,3 +212,9 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - DONE: Context uses preceding-day scored strain, not today's unfinished strain. No manual journal/context form, per user instruction. No inferences of caffeine, illness, fatigue, nutrition or causes. Explain that WHOOP Recovery and its HRV/RHR components are dependent, not independent confirmation.
 - VERIFIED locally: 78 Node tests and 9 Chromium scenarios, including gaps, missing today, sparse/adjacent samples, baseline chronology, prior-day load, bilingual copy and daily evidence UI. Cross-browser CI/deployment NEEDS TEST until release evidence.
 - NEEDS TEST: Real-account interpretation acceptance and clinical/sports review. Further sleep/workout depth, period highlights and prior integration/operational blockers remain open. No backend/schema/account-data changes.
+
+### Connected daily analysis release evidence
+- VERIFIED: implementation `2612ff4136f1f0e71a427918e8bfcb475a6e4801`, [PR #8](https://github.com/3bHussein/Whoop-Intelligence-/pull/8), merge `6839f2a44131a8f6f87c2c28aa35646a00d05ab1`.
+- VERIFIED: [CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39146736735) passed 78 Node tests and 27 Chromium/Firefox/WebKit scenarios, including daily evidence and existing privacy/auth regressions.
+- DONE / VERIFIED: [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39146906844) succeeded; daily-story/dashboard JS and CSS fetched with HTTP 200 and exact source hashes. Arabic mobile daily story visually inspected.
+- NEEDS TEST: Real-account interpretation acceptance and qualified review. No inferred journal variables, medical significance, causal attribution or exercise clearance. No backend or account-data mutation.

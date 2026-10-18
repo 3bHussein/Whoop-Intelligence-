@@ -174,3 +174,4 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - DONE: Per user instruction, manual context/journaling removed from planned scope; rely on existing WHOOP records. Never infer caffeine, fatigue, nutrition, illness or cause.
 - VERIFIED locally: 78 Node tests and 9 Chromium scenarios. CI/deployment NEEDS TEST until release evidence below. Clinical review and real-account acceptance remain open.
 - TODO: Deeper available sleep timing/stages and workout-level analysis; stronger period report highlights. Existing reliability/launch blockers unchanged.
+- VERIFIED release: PR #8 / `2612ff4136f1f0e71a427918e8bfcb475a6e4801`; CI `39146736735` passed 78 Node tests / 27 browser scenarios. Pages `39146906844` succeeded with production JS/CSS source hashes. WHOOP-only scope is DONE; real-account acceptance and qualified review remain NEEDS TEST.
