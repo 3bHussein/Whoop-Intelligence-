@@ -61,3 +61,8 @@ Current access-token expiry can block sync; reconnect is a temporary workaround 
 - Weekly/monthly reports now expose scored-day coverage and warn about incomplete records instead of presenting missing days as normal.
 - This is a deployed frontend change; live multi-device browser verification is still pending.
 - Upcoming: chronological source-date ordering, server-side pagination, authenticated background schedule, retention and export completeness.
+
+## 2026-10-18 — Period comparisons
+- Reports now compare median RHR, HRV and Recovery of the selected 7/30-day period with the immediately preceding equal-length window.
+- Minimum 3 readings per window per indicator; otherwise state data are insufficient rather than implying trends.
+- Updated main branch; on-device verification and server scheduling are still pending.
