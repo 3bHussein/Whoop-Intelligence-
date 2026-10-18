@@ -175,3 +175,11 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - VERIFIED locally: 78 Node tests and 9 Chromium scenarios. CI/deployment NEEDS TEST until release evidence below. Clinical review and real-account acceptance remain open.
 - TODO: Deeper available sleep timing/stages and workout-level analysis; stronger period report highlights. Existing reliability/launch blockers unchanged.
 - VERIFIED release: PR #8 / `2612ff4136f1f0e71a427918e8bfcb475a6e4801`; CI `39146736735` passed 78 Node tests / 27 browser scenarios. Pages `39146906844` succeeded with production JS/CSS source hashes. WHOOP-only scope is DONE; real-account acceptance and qualified review remain NEEDS TEST.
+
+## Question-led guide and deeper source detail
+- DONE: Understand my data section presents three question choices and calculated personal answers, in AR/EN and both detail modes. Overview links to the guide.
+- DONE: Available sleep start/end times summarized circularly across midnight with recorded offsets, median timing deviation and counts; available light/SWS/REM/awake stage minutes exposed without invented stages or ideal ratios.
+- DONE: Completed scored workouts deduplicate by source ID and use source-local dates. Duration, days with recorded workouts and median workout strain shown separately from day strain. Missing/unfinished/future/unaligned workouts do not become completed activity.
+- VERIFIED locally: 84 Node tests / 9 Chromium scenarios, including all three question choices, stage evidence, workout detail and mobile RTL. CI/deployment NEEDS TEST until release evidence below.
+- TODO: Optional genuine free-form AI conversation requires server-side provider setup, health-data consent and grounded-answer validation. Current feature is explicitly a calculated question guide, with no AI provider data transfer. Medical appointments/lab services are outside current WHOOP scope.
+- NEEDS TEST: Real-account acceptance and qualified interpretation review. Existing reliability/launch blockers unchanged.
