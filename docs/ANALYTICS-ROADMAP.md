@@ -35,3 +35,9 @@ Bilingual Arabic/English personal health and sports analytics. The system provid
 
 ## Current known limits
 Current access-token expiry can block sync; reconnect is a temporary workaround until atomic refresh is built. Do not claim analysis is medically certified.
+
+## 2026-10-18 implementation update
+- Deployed WHOOP data API v2 with OAuth refresh-token rotation, one-user lease via PostgreSQL RPCs, encrypted token replacement and release in finally.
+- The refresh protocol is deployed but remains **unverified against a genuinely expired access token**. Refresh can still require reauthorization if WHOOP rotates tokens and a network/database failure occurs between exchange and persistence.
+- Manual data sync is available. Background scheduler, webhook verification, full historical backfill, deletion and commercial clinical review remain pending.
+- Backend lock expires after 45 seconds; lock prevents most concurrent refresh attempts, while production-strength crash recovery and durable idempotency are additional work.
