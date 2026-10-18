@@ -66,3 +66,29 @@ Current access-token expiry can block sync; reconnect is a temporary workaround 
 - Reports now compare median RHR, HRV and Recovery of the selected 7/30-day period with the immediately preceding equal-length window.
 - Minimum 3 readings per window per indicator; otherwise state data are insufficient rather than implying trends.
 - Updated main branch; on-device verification and server scheduling are still pending.
+
+## V2 checkpoint — 2026-10-18 (supersedes historical limits above)
+
+| Milestone | Status | Delivered / remainder |
+|---|---|---|
+| M1 — Responsive bilingual product | VERIFIED | Eight sections, dark mobile/desktop layout, RTL/LTR, mobile navigation, loading, accessible timelines/tables; Chromium fixtures pass; real Android acceptance pending |
+| M2 — Personal evidence engine | VERIFIED | Pure engine, source IDs/local offsets, 7/30 statistics, prior-window differences, baselines, sample sizes, missingness/timestamps; no generic text presented as a personal diagnosis |
+| M3 — Five associations | VERIFIED | Same-cycle sleep/recovery/HRV/consistency plus exact prior calendar-day strain pairs; variation/minimum samples and outlier sensitivity; fixture validation, not clinical validation |
+| M4 — Integration resilience | NEEDS TEST | Bounded complete pagination, 62-day repair, recent overlap, explicit failure, fresh-token lease check, per-user run history; real expiry/backfill acceptance pending |
+| M5 — Privacy/security | NEEDS TEST | Service-only grants/RLS verified, user-scoped handlers, paginated export fixtures, accurate bilingual privacy; disposable deletion, remote revoke and login deletion remain |
+| M6 — Automated quality | NEEDS TEST | 26 local Node tests + 5 Chromium scenarios pass; GitHub cross-browser workflow and Pages test gate added; CI results tracked in Development Log |
+| M7 — Closed-browser sync | BLOCKED | No cron/net or configured authenticated scheduler; do not claim 24/7 sync |
+| M8 — Launch review | TODO | Persistent backfill resume, webhook authenticity, monitoring alerts/retention, transactional deletion, provider backup policy, qualified clinical/sports review |
+
+### Calculation contract
+
+- Periods end on the current date using the latest available recorded WHOOP offset (UTC date only if none exists); source daily observations retain each record's own offset. Travel/DST can produce duplicate local dates: one newest daily observation is retained; days are never multiplied to inflate sample size.
+- Recovery joins `cycle_id`; main sleep joins `sleep_id`. Sleep can appear without a scored recovery using its own cycle/end and offset. No guessed nearest-date matching.
+- Baseline is the median of the 30 calendar days before the latest measurement, excluding that latest value; personal differences require seven baseline observations. Period comparison requires three observations in each disjoint equal-length window; this is a descriptive display rule, not medical significance.
+- Correlation requires at least seven pairs and nonzero variance. No significance/predictive claim is made. Outliers are retained, with leave-one-out coefficient sensitivity warning for eligible samples. No unvalidated clinical thresholds or exercise-clearance recommendation.
+- Sleep uses summed light/slow-wave/REM stages when available; otherwise bed minus awake minus no-signal time only if all fields exist and are valid. WHOOP efficiency and consistency percentages are source fields, not invented estimates.
+- Baselines, means and medians are computed from the authenticated account's cache; no fixture data ships in the public artifact. A field missing on a scored record remains missing.
+
+### Integration limits
+
+The dashboard/export read pagination cap is 20,000 rows (per type for dashboard), explicit error on overflow. Sync caps each type at 20 pages with a shared 70-second budget; caps/repeated cursor/rate limits are surfaced as incomplete, not success. Resuming an incomplete full repair currently means rerunning manual sync; there is no persisted pagination cursor. Sync-history rows begin at V2 and are not a retroactive log of prior operations. A stale running row is abandoned after two minutes on the next sync attempt. A crash after WHOOP refresh rotation but before persistence may still require reauthorization.

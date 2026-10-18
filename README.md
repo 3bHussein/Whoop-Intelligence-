@@ -1,41 +1,47 @@
-# WHOOP Intelligence
+# WHOOP Intelligence V2
 
-Independent personal wellness analytics application — in development.
+Independent Arabic/English personal wellness analytics, using authenticated WHOOP API v2 records. Not affiliated with WHOOP; not a medical diagnosis or exercise clearance service.
 
-## Public pages
-- [Landing page](https://3bhussein.github.io/Whoop-Intelligence-/)
-- [Privacy policy](https://3bhussein.github.io/Whoop-Intelligence-/privacy.html)
+[Dashboard](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html) · [Account](https://3bhussein.github.io/Whoop-Intelligence-/) · [Privacy](https://3bhussein.github.io/Whoop-Intelligence-/privacy.html)
 
-Pages links work after GitHub Pages deploys successfully.
+## Implemented
 
-## Backend
-Supabase project: `whoop-intelligence`, independent of ProgressXX.
+- Dark mobile/desktop dashboard: Overview, Recovery, Sleep, Cardiovascular, Training, Insights, Reports and Settings.
+- Arabic RTL / English LTR; accessible SVG timelines with data tables; printable reports.
+- 7/30 calendar-day medians and means, previous equal-length periods, per-metric sample sizes, coverage, timestamps and prior personal baselines.
+- Five descriptive relationships: sleep–recovery, sleep–HRV, prior-day strain–recovery, prior-day strain–RHR and sleep consistency–recovery. Minimum seven varying pairs; leave-one-out sensitivity warning; no causal claims.
+- Cycle/sleep ID joins and WHOOP local offsets; naps, unavailable scores and calibration excluded where appropriate. Sleep duration uses stage totals or bed minus awake and no-signal time. Sleep efficiency is displayed only from WHOOP's scored source field.
+- Authenticated paginated read/export; bounded paginated sync, rate-limit backoff, refresh serialization, duplicate-safe upserts and per-user sync monitoring.
 
-WHOOP OAuth callback:
-`https://jsfeybhgobmrydcfnyjg.supabase.co/functions/v1/whoop-callback`
+## Run and test
 
-**Important:** Callback is currently a 503 placeholder; WHOOP authorization and synchronization are not enabled. Never commit API credentials, refresh tokens or health data.
+Node 24 is required for the Edge Function fixture harness (`stripTypeScriptTypes`).
 
-## Next
-Configure WHOOP Developer application and its scopes, enable a secure OAuth flow with one-time user-bound state, exchange codes, encrypt and rotate tokens, and test authenticated synchronization and deletion.
+```sh
+npm ci
+npm test
+npx playwright install --with-deps chromium firefox webkit
+ALL_BROWSERS=1 npm run test:browser
+python3 -m http.server 8765
+```
 
-## Deployment
-GitHub Actions workflow `.github/workflows/pages.yml`. Under GitHub repository Settings > Pages select GitHub Actions as the source.
+Browser tests intercept the SDK and API using safe fixtures. They do not log in to WHOOP or delete live records. For local browser development the production backend allows the production origin, not arbitrary localhost origins.
 
-## Integration verification — 2026-10-18
-WHOOP Developer Sandbox application exists. User screenshots confirm the six read scopes are enabled; rate limits shown: 100 requests/minute and 10,000/day. Redirect URI has been registered. Edge Function `whoop-callback` is still a non-operational placeholder; **do not start OAuth** yet.
+## Architecture and deployment
 
-### Security prerequisites before enabling Connect
-1. A verified Supabase Auth user session must start OAuth on an authenticated endpoint.
-2. Store a short-lived, one-use, account-bound OAuth state; reject missing/expired/replayed states.
-3. Request `offline` scope for refresh-token issuance.
-4. Use WHOOP credentials only server-side; encrypt access and refresh tokens with an independently generated secret.
-5. Rotate refresh tokens atomically under a per-user lock; retry with rate-limit awareness.
-6. Provide disconnect/revocation and deletion flows before collecting real health records.
-7. Verify the published privacy URL returns HTTP 200 to the public.
+Static HTML, CSS and ES modules live at the repository root / `assets/`. Pure analytics live in `assets/analytics.js`; no demo data is imported by production code. Only a Supabase publishable key appears in the browser. Existing email-link authentication is preserved.
 
-Privacy URL publication could not yet be independently confirmed.
+Supabase project **whoop-intelligence** (`jsfeybhgobmrydcfnyjg`) is independent of ProgressXX. Server function sources are versioned under `supabase/functions/`. Required server-only environment variables: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `WHOOP_CLIENT_ID`, `WHOOP_CLIENT_SECRET`, `WHOOP_TOKEN_ENCRYPTION_KEY` (base64 32-byte AES key). Never publish their values. Callback URL: `https://jsfeybhgobmrydcfnyjg.supabase.co/functions/v1/whoop-callback`.
 
-## Project status and development tracking
+The existing callback and start function are preserved snapshots; this release deploys changes only to data/account functions. These endpoints retain `verify_jwt=false` because their bodies validate the bearer token using Supabase Auth `getUser`; the callback validates and atomically consumes one-time state instead.
 
-See [Development Log](docs/DEVELOPMENT-LOG.md) for completed, unverified, blocked and planned features, and [Analytics Roadmap](docs/ANALYTICS-ROADMAP.md) for detailed implementation notes. Each meaningful change should update the log with test results.
+GitHub Pages runs tests before deployment and publishes only HTML + `assets/`, excluding tests, backend code and dependencies. The PR verification workflow additionally tests Chromium, Firefox and WebKit.
+
+## Important operational limits
+
+- Automatic sync runs only while a dashboard session is open. Secure server scheduler and webhook processing are not configured.
+- Manual sync / first V2 auto-sync requests a 62-day repair window; later automatic sync overlaps at least seven days. Each category has a 20-page safety cap and a shared time budget; incomplete requests are explicit. This is not unlimited historical backfill or persistent cursor resume.
+- Complete cached read/export is paginated, capped at 20,000 rows per request (per type for dashboard reads). Over-cap operations fail, rather than silently truncate. Exports are not a transactional snapshot during concurrent changes.
+- Refresh uses encrypted credentials, a per-user lease and owner-conditional persistence. A crash between WHOOP rotation and persistence may require reconnecting. Real expired-token refresh still needs acceptance testing.
+- Local disconnect deletes cached health records, local tokens, pending states and sync history. Remote WHOOP revocation, transactional deletion with concurrent sync protection, Supabase login deletion and backup retention are still pending. Never test deletion using the existing real connection.
+- See [Development Log](docs/DEVELOPMENT-LOG.md), [Roadmap](docs/ANALYTICS-ROADMAP.md) and [Security audit](docs/SECURITY-REVIEW.md) for exact verification evidence and remaining work.
