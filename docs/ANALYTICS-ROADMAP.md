@@ -56,3 +56,8 @@ Current access-token expiry can block sync; reconnect is a temporary workaround 
 - **Important:** remote WHOOP OAuth revocation is NOT yet implemented and export is not exhaustive beyond 1,000 rows.
 - Server-side scheduling was evaluated; pg_cron/pg_net were not installed. No scheduled job was deployed without safely provisioned service authentication. Browser-session auto-sync remains the current refresh mechanism.
 - Needs verification: actual export, deletion path (prefer disposable test connection rather than real account), server-side schedule authorization, and RLS/security review.
+
+## 2026-10-18 — Data quality update
+- Weekly/monthly reports now expose scored-day coverage and warn about incomplete records instead of presenting missing days as normal.
+- This is a deployed frontend change; live multi-device browser verification is still pending.
+- Upcoming: chronological source-date ordering, server-side pagination, authenticated background schedule, retention and export completeness.
