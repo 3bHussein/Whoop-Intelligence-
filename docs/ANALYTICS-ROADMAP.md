@@ -166,3 +166,11 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - VERIFIED live (read-only metadata): RLS enabled; anon/authenticated SELECT and DELETE denied on health records, OAuth tokens/pending and sync history.
 - NEEDS TEST: CI/deployment, two real users, genuine expiry and disposable WHOOP revoke/deletion. Deletion is still sequential, not transactional; in-flight sync/callback races remain open.
 - VERIFIED release: PR #7 / `bee1d304eaa267556048145873d29a2185dcb0d5`; CI `39145771031` passed 69 Node tests and 27 cross-browser scenarios; whoop-account v3 deployed with matching source and live missing/invalid bearer 401 checks; Pages `39145940673` succeeded with exact privacy-page hash checks. Live destructive/multi-user/expiry acceptance remains NEEDS TEST.
+
+## Connected daily analysis — WHOOP-only scope
+- DONE: Daily synthesis of main sleep/recovery/HRV/RHR; combined, mixed, repeated, typical-change and insufficient-data states; actual HRV/RHR evidence visible beside the summary.
+- DONE: Each day's own prior-30-day baseline, at least 7 observations; 3-day persistence requires actual adjacent dates. Typical change uses at least 7 exact adjacent differences. Source gaps never bridge; displayed precision controls size comparison.
+- DONE: Prior-day strain context, missing-today handling, bilingual calculation explanation. Recovery/HRV/RHR dependencies are explicit rather than counted as independent evidence.
+- DONE: Per user instruction, manual context/journaling removed from planned scope; rely on existing WHOOP records. Never infer caffeine, fatigue, nutrition, illness or cause.
+- VERIFIED locally: 78 Node tests and 9 Chromium scenarios. CI/deployment NEEDS TEST until release evidence below. Clinical review and real-account acceptance remain open.
+- TODO: Deeper available sleep timing/stages and workout-level analysis; stronger period report highlights. Existing reliability/launch blockers unchanged.
