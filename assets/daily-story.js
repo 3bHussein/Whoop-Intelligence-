@@ -6,7 +6,7 @@ const keys=['sleep','recoveryScore','hrv','rhr'];
 export function dailyStory(report){
  const {days,endDay}=report,byDay=new Map(days.map(d=>[d.day,d]));
  const compare=(key,day)=>{const value=byDay.get(day)?.[key],ref=windowStats(days,key,30,shift(day,-1));if(!numeric(value)||ref.count<7)return null;
-  const delta=value-ref.median,direction=Math.round(delta*(key==='sleep'?60:10));const steps=[];for(const row of ref.rows){const previous=byDay.get(shift(row.day,-1));if(previous&&previous.day>=ref.start&&numeric(previous[key]))steps.push(Math.abs(row[key]-previous[key]))}const typical=steps.length>=7?median(steps):null;
+  const delta=value-ref.median,direction=Math.sign(delta)*Math.round(Math.abs(delta)*(key==='sleep'?60:10));const steps=[];for(const row of ref.rows){const previous=byDay.get(shift(row.day,-1));if(previous&&previous.day>=ref.start&&numeric(previous[key]))steps.push(Math.abs(row[key]-previous[key]))}const typical=steps.length>=7?median(steps):null;
   return{value,baseline:ref.median,delta,direction:Math.sign(direction),referenceCount:ref.count,referenceStart:ref.start,referenceEnd:ref.end,typicalChange:typical,stepCount:steps.length,larger:typical===null?null:Math.round(Math.abs(delta)*(key==='sleep'?60:10))>Math.round(typical*(key==='sleep'?60:10))};
  };
  const signals=keys.map(key=>{const current=compare(key,endDay);let streak=0;if(current?.direction)for(let i=0;i<7;i++){const c=compare(key,shift(endDay,-i));if(!c||c.direction!==current.direction)break;streak++}return{key,...current,available:numeric(byDay.get(endDay)?.[key]),comparable:!!current,streak}});
