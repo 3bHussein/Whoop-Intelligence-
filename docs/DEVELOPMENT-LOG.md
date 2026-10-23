@@ -243,3 +243,9 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - VERIFIED: initial implementation `5efef97741813e2dae94df313cfced2909b4d1ca`, final implementation `745eb3ae589c3502724506a48544e13d7ffb1243`, [PR #10](https://github.com/3bHussein/Whoop-Intelligence-/pull/10), merge `56dca78bf05f308d3ac6e84235b80fb8822a7e24`.
 - VERIFIED: [final PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39968101573) passed 94 Node tests and 27 Chromium/Firefox/WebKit browser scenarios, including report evidence/print and existing guide/privacy/auth regressions.
 - NEEDS TEST: Pages run `39968424393` remained in browser-installation step for several minutes; this documentation checkpoint initiates a fresh Pages worker through existing push/concurrency behavior. No runtime code changes after the verified final implementation. Production publication not yet claimed.
+
+### Period-summary release evidence
+- DONE / VERIFIED: [Pages retry](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39969274989) succeeded for checkpoint `25d2d2350a8695cdd4ac2e5a96cf64d768b24f53`. The superseded run was cancelled during slow Ubuntu dependency downloads; a fresh worker completed successfully.
+- VERIFIED: Production period-story/daily-story/dashboard JS and CSS returned HTTP 200 and exactly matched local source hashes. Arabic mobile summary/evidence and print styling were covered by local review plus the successful 94-Node/27-browser PR suite.
+- NEEDS TEST: Real-account acceptance and qualified review. Existing AI-provider configuration/consent, real-user/expiry/disposable-delete, sync/deletion coordination, scheduler and restore blockers remain unchanged.
+- This final release-evidence update changes documentation only; no runtime code differs from the tested/deployed source.
