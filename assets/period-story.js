@@ -6,9 +6,9 @@ export function periodStory(report){
  const n=report.period,signals=keys.map(key=>{
   const m=report.metrics[key],comparable=n>1&&m.count>=3&&m.referenceCount>=3&&numeric(m.value)&&numeric(m.reference)&&numeric(m.difference);
   const rows=report.days.filter(d=>d.day>=report.start&&d.day<=report.endDay&&numeric(d[key]));
-  const scale=key==='sleep'?60:10,direction=comparable?Math.sign(Math.round(m.difference*scale)):null;
+  const scale=key==='sleep'?60:10,roundedDirection=delta=>Math.sign(delta)*Math.sign(Math.round(Math.abs(delta)*scale)),direction=comparable?roundedDirection(m.difference):null;
   let above=0,below=0,same=0,longest=0,run=0,prior=null;
-  for(const row of rows){const d=comparable?Math.sign(Math.round((row[key]-m.reference)*scale)):null;if(d===1)above++;else if(d===-1)below++;else if(d===0)same++;
+  for(const row of rows){const d=comparable?roundedDirection(row[key]-m.reference):null;if(d===1)above++;else if(d===-1)below++;else if(d===0)same++;
    if(direction!==null&&direction!==0&&d===direction){run=prior&&row.day===shift(prior,1)?run+1:1;longest=Math.max(longest,run);prior=row.day}else{run=0;prior=null}}
   const aligned=direction===1?above:direction===-1?below:same;
   return{key,value:m.value,reference:m.reference,difference:comparable?m.difference:null,direction,count:m.count,referenceCount:m.referenceCount,coverage:m.count/n,referenceCoverage:m.referenceCount/n,comparable,above,below,same,aligned,longest,wellCovered:m.count/n>=.7&&m.referenceCount/n>=.7};
