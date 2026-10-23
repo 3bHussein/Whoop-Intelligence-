@@ -238,3 +238,8 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - VERIFIED locally: 94 Node tests; 9 Chromium browser scenarios passed after installing the missing browser runtime. Includes disjoint windows, missing dates, sparse coverage, ties/zero references, 30-day bounds, unchanged medians, bilingual evidence, existing guide/privacy/auth regressions and responsive layout. Arabic mobile summary inspected.
 - DONE: Dedicated print styling preserves readable period findings and exposes calculation evidence in saved PDF output.
 - NEEDS TEST: Three-engine CI and Pages deployment. Real-account acceptance, clinical review, optional free-form AI provider/consent, genuine multi-user/expired-token/disposable-delete acceptance, transactional deletion/sync, scheduler and operational restore remain open. No backend/schema changes, AI calls or private health-data mutation.
+
+### Period-summary CI checkpoint
+- VERIFIED: initial implementation `5efef97741813e2dae94df313cfced2909b4d1ca`, final implementation `745eb3ae589c3502724506a48544e13d7ffb1243`, [PR #10](https://github.com/3bHussein/Whoop-Intelligence-/pull/10), merge `56dca78bf05f308d3ac6e84235b80fb8822a7e24`.
+- VERIFIED: [final PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/39968101573) passed 94 Node tests and 27 Chromium/Firefox/WebKit browser scenarios, including report evidence/print and existing guide/privacy/auth regressions.
+- NEEDS TEST: Pages run `39968424393` remained in browser-installation step for several minutes; this documentation checkpoint initiates a fresh Pages worker through existing push/concurrency behavior. No runtime code changes after the verified final implementation. Production publication not yet claimed.
