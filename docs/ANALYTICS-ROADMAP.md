@@ -1,6 +1,6 @@
 # WHOOP Intelligence — Analytics roadmap
 
-## Current completion snapshot — 2026-10-18 privacy batch
+## Current completion snapshot — 2026-10-23 report batch
 This snapshot supersedes historical statements below; VERIFIED always names its scope.
 
 | Area | Status | Remaining work |
@@ -184,3 +184,11 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - TODO: Optional genuine free-form AI conversation requires server-side provider setup, health-data consent and grounded-answer validation. Current feature is explicitly a calculated question guide, with no AI provider data transfer. Medical appointments/lab services are outside current WHOOP scope.
 - NEEDS TEST: Real-account acceptance and qualified interpretation review. Existing reliability/launch blockers unchanged.
 - VERIFIED release: PR #9 / `00d02a3c51d96475c08a41aedc6e76b73d66f373`; CI `39148050851` passed 84 Node tests / 27 cross-browser scenarios. Pages `39148198599` succeeded with exact production guide/dashboard/CSS/i18n hashes. Real-account acceptance and qualified review remain NEEDS TEST; free-form AI remains TODO.
+
+
+## 2026-10-23 — Meaningful weekly/monthly summaries
+- DONE: Replace generic period priority with a three-signal period summary: main sleep, recovery and daily strain, comparing disjoint equal windows and showing actual medians/differences, sample coverage and recorded directional support.
+- DONE: Count above/below/tied days and longest exact-calendar run against the previous period median. Gaps break runs; no health score or clinical significance is inferred. A recurring label is a disclosed display rule: ≥3 consecutive days, ≥70% directional support and ≥70% coverage in each window.
+- DONE: Distinguish insufficient, partial, recurring, mixed and similar-median summaries. Similar medians do not imply identical days. Zero references never require percent division. Report notes acknowledge the ongoing current day.
+- VERIFIED locally: 92 Node tests / 9 Chromium scenarios, including period evidence and mobile RTL; initial browser attempt was blocked by missing Chromium, then installation and executed rerun passed. CI/deployment NEEDS TEST until release evidence below.
+- NEEDS TEST: Real-account acceptance and qualified review. Free-form AI, genuine two-user/expiry/delete acceptance, transactional sync/deletion, scheduler and operational restore remain open.
