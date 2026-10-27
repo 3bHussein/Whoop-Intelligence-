@@ -2,11 +2,19 @@
 
 Independent Arabic/English personal wellness analytics, using authenticated WHOOP API v2 records. Not affiliated with WHOOP; not a medical diagnosis or exercise clearance service.
 
-[Dashboard](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html) · [Account](https://3bhussein.github.io/Whoop-Intelligence-/) · [Privacy](https://3bhussein.github.io/Whoop-Intelligence-/privacy.html)
+[Dashboard](https://3bhussein.github.io/Whoop-Intelligence-/analysis.html) · [Account](https://3bhussein.github.io/Whoop-Intelligence-/?account=1) · [Privacy](https://3bhussein.github.io/Whoop-Intelligence-/privacy.html)
+
+## Daily use — 27 October 2026
+
+Open the site while signed in to go directly to **Home**. It always opens daily essentials, even if Advanced was previously saved. Pick Today or an earlier day: sleep performance, Recovery, day strain, calories burned, main sleep duration, source-provided steps, HRV/RHR and completed workouts share one screen. Mobile navigation has Home, Sleep, Activity, Reports and More; extra sections/account/privacy remain under More. Detailed analytics are one explicit action away.
+
+Calories use the scored cycle's `kilojoule / 4.184` in kcal; workout energy is never added again. Sleep performance uses `sleep_performance_percentage`, independently from efficiency. Missing fields show a dash rather than zero or yesterday's value. Sleep need is shown only when all signed WHOOP components are available; no universal sleep target replaces it. Steps use only the explicit cycle `step_count` field. Source cycle update time is visible. These are WHOOP cycle dates/estimates, not a food diary or a live Bluetooth connection. [WHOOP API reference](https://developer.whoop.com/api/) and [WHOOP Recovery colors](https://www.whoop.com/us/en/thelocker/how-does-whoop-recovery-work-101/) define the source fields and the familiar 34/67 color boundaries; no new readiness score is calculated.
+
+Account management is at `/?account=1`; it remains available without automatic redirection. Press **Update WHOOP** on Home for incremental synchronization. Other analytics/report views preserve their period controls and Simple/Advanced choice.
 
 ## Implemented
 
-- Dark mobile/desktop dashboard: Overview, Recovery, Sleep, Cardiovascular, Training, Insights, Reports and Settings.
+- Daily-first mobile/desktop Home; Recovery, Sleep, Cardiovascular, Activity, question guide, Reports and More/Settings remain accessible.
 - Arabic RTL / English LTR; accessible SVG timelines with data tables; printable reports.
 - 7/30 calendar-day medians and means, previous equal-length periods, per-metric sample sizes, coverage, timestamps and prior personal baselines.
 - Five descriptive relationships: sleep–recovery, sleep–HRV, prior-day strain–recovery, prior-day strain–RHR and sleep consistency–recovery. Minimum seven varying pairs; leave-one-out sensitivity warning; no causal claims.
@@ -21,7 +29,8 @@ Node 24 is required for the Edge Function fixture harness (`stripTypeScriptTypes
 npm ci
 npm test
 npx playwright install --with-deps chromium firefox webkit
-ALL_BROWSERS=1 npm run test:browser
+SITE_RELEASE=local node scripts/build-site.mjs
+WHOOP_SITE_ROOT=_site ALL_BROWSERS=1 npm run test:browser
 python3 -m http.server 8765
 ```
 
@@ -92,3 +101,7 @@ This is an explicitly calculated guide, not free-form AI conversation. No data i
 
 ### Weekly and monthly evidence summaries
 Reports for 7/30 days now explain what changed across main sleep, recovery and day strain, with current/previous medians, coverage, counts above/below/tied to the earlier median, and longest consecutive support. Missing dates interrupt runs. Recurring-change labels use a disclosed descriptive rule (at least three consecutive days, 70% recorded support and 70% coverage in both periods), not a medical threshold. Sparse periods are explicitly partial; similar medians do not imply similar individual days. Today's unfinished strain is acknowledged. No AI provider, account-data or backend changes are involved.
+
+
+### Cache-safe public build
+`node scripts/build-site.mjs` copies only the five public HTML pages and assets. CI/Pages sets `SITE_RELEASE` to the commit SHA; HTML references `assets/releases/<sha>/...` so updated styles and relative module imports arrive together. Canonical asset URLs are retained for already-open older tabs. Server code, test fixtures, dependencies and environment files are excluded. CI runs browser checks against the built artifact as well as unit-testing the allowlist/versioning contract.

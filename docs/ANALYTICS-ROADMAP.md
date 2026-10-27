@@ -1,6 +1,6 @@
 # WHOOP Intelligence — Analytics roadmap
 
-## Current completion snapshot — 2026-10-23 report batch
+## Current completion snapshot — 2026-10-27 daily-use batch
 This snapshot supersedes historical statements below; VERIFIED always names its scope.
 
 | Area | Status | Remaining work |
@@ -194,3 +194,13 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - NEEDS TEST: Real-account acceptance and qualified review. Free-form AI, genuine two-user/expiry/delete acceptance, transactional sync/deletion, scheduler and operational restore remain open.
 - VERIFIED CI checkpoint: PR #10, final implementation `745eb3ae589c3502724506a48544e13d7ffb1243`; final PR CI `39968101573` passed 94 Node tests and 27 browser scenarios. Deployment remains NEEDS TEST while the stalled browser-installation worker is retried by the documentation push.
 - DONE / VERIFIED publication: Pages retry `39969274989` succeeded after a fresh worker replaced a slow Ubuntu-package download. Four production JS/CSS assets matched exact source hashes. Current weekly/monthly summary is deployed; real-account acceptance and qualified review remain NEEDS TEST.
+
+
+## 2026-10-27 — Daily essentials and familiar navigation
+- DONE: Home always opens daily essentials, including for previously saved Advanced preference. Three source-value rings, cycle kcal, main-sleep duration/available WHOOP sleep need, available steps, HRV/RHR, completed workouts, exact day navigation and visible source update time. No prior-day fallback or invented values.
+- DONE: Familiar five-item bottom navigation on mobile, secondary routes under More, scroll-to-top navigation, signed-in root entry redirects to Home; explicit account-management route preserves login/connect/logout.
+- DONE: Source fields use scored cycle energy (`kilojoule / 4.184`), source sleep performance independently from efficiency, explicit top-level step count and signed sleep-needed components. Official `total_no_data_time_milli` supported alongside legacy no-signal field. Workout energy is not added to cycle expenditure. WHOOP color boundaries are source-linked, not a new medical algorithm.
+- DONE: Commit-versioned HTML/JS/CSS asset paths with canonical compatibility URLs. Public build excludes server/test/private files; browsers test the built artifact.
+- VERIFIED locally: 105 Node tests and 12 Chromium scenarios, including signed-in entry, day navigation with different recorded energy, missing fields, performance versus efficiency, source units/need/time-zone clocks, remembered Advanced preference, More navigation, built artifact and prior privacy/auth/report regressions. Arabic mobile visually inspected. Three-engine CI and deployment NEEDS TEST until release evidence below.
+- NEEDS TEST: Real-account/physical Android acceptance and qualified interpretation review. No backend/schema changes or live destructive tests. Existing provider/refresh/scheduler/deletion coordination/restore blockers unchanged.
+- DONE / VERIFIED (fixtures): Stale client responses cannot repopulate Home after sign-out/account switch. A new owner's cache read is retried after the previous in-flight load clears. This does not close genuine two-user deployed acceptance or server session-revocation review.
