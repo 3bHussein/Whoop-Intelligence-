@@ -205,3 +205,10 @@ Meaning-first interpretation is now **DONE / VERIFIED** by [PR #4 CI](https://gi
 - NEEDS TEST: Real-account/physical Android acceptance and qualified interpretation review. No backend/schema changes or live destructive tests. Existing provider/refresh/scheduler/deletion coordination/restore blockers unchanged.
 - DONE / VERIFIED (fixtures): Stale client responses cannot repopulate Home after sign-out/account switch. A new owner's cache read is retried after the previous in-flight load clears. This does not close genuine two-user deployed acceptance or server session-revocation review.
 - DONE / VERIFIED release: PR #11, final source `b5cb411bfa56b81dd24443174808f5e5d33038fe`; CI `40500996407` passed 105 Node tests / 36 browser scenarios on the built artifact. Pages `40501369074` succeeded, with exact production HTML and release-versioned JS/CSS hashes. Actual-account and physical-device acceptance remain NEEDS TEST; no new server/database permissions or paid providers enabled.
+
+## 2026-10-27 — More WHOOP details, simpler daily reading
+- DONE: Daily sleep card compares recorded main sleep with complete source WHOOP sleep need in rounded minutes. No deficit diagnosis or replacement of source performance percentage.
+- DONE: Collapsed sleep panel presents light/deep/REM/awake durations and RR (respiratory rate), independently preserving unavailable fields and real zeros. This is a duration summary, not an invented overnight hypnogram or stage-quality score.
+- DONE: Completed workouts expand to source average/max HR, distance in km and recorded heart-rate percentage; missing values remain missing. Existing scopes, cache and backend unchanged.
+- VERIFIED locally: 108 Node tests and 12 Chromium scenarios against the versioned build, including AR/EN mobile/desktop expansion, no overflow and all prior auth/privacy/navigation regressions.
+- NEEDS TEST: Three-engine CI, production deployment, actual-owner/physical-device acceptance. Existing scheduler, real token-expiry and transactional deletion blockers unchanged.
