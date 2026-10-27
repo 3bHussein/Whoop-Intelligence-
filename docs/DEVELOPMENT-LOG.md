@@ -264,3 +264,10 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - VERIFIED: [final PR CI](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/40500996407) passed 105 Node tests and 36 Chromium/Firefox/WebKit scenarios against the built, versioned artifact. Includes stale sign-out/account-change regressions and all previous guide/privacy/report coverage.
 - DONE / VERIFIED: [Pages](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/40501369074) succeeded. Production index/analysis HTML and release-versioned dashboard/daily-home/analytics JS plus CSS returned HTTP 200 with exact built-source hashes. Public HTML points to the immutable merge-SHA asset path.
 - NEEDS TEST: Owner acceptance on actual WHOOP data/physical Android, genuine provider expiry and existing launch/security/operational open items. Browser health values are fixtures; no live account was disconnected or deleted. This final evidence update changes documentation only, not deployed runtime code.
+
+## 2026-10-27 — More WHOOP details, simpler daily reading
+- DONE: Daily sleep card compares recorded main sleep with complete source WHOOP sleep need in rounded minutes. No deficit diagnosis or replacement of source performance percentage.
+- DONE: Collapsed sleep panel presents light/deep/REM/awake durations and RR (respiratory rate), independently preserving unavailable fields and real zeros. This is a duration summary, not an invented overnight hypnogram or stage-quality score.
+- DONE: Completed workouts expand to source average/max HR, distance in km and recorded heart-rate percentage; missing values remain missing. Existing scopes, cache and backend unchanged.
+- VERIFIED locally: 108 Node tests and 12 Chromium scenarios against the versioned build, including AR/EN mobile/desktop expansion, no overflow and all prior auth/privacy/navigation regressions.
+- NEEDS TEST: Three-engine CI, production deployment, actual-owner/physical-device acceptance. Existing scheduler, real token-expiry and transactional deletion blockers unchanged.

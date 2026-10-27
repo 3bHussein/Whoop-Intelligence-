@@ -105,3 +105,6 @@ Reports for 7/30 days now explain what changed across main sleep, recovery and d
 
 ### Cache-safe public build
 `node scripts/build-site.mjs` copies only the five public HTML pages and assets. CI/Pages sets `SITE_RELEASE` to the commit SHA; HTML references `assets/releases/<sha>/...` so updated styles and relative module imports arrive together. Canonical asset URLs are retained for already-open older tabs. Server code, test fixtures, dependencies and environment files are excluded. CI runs browser checks against the built artifact as well as unit-testing the allowlist/versioning contract.
+
+### Daily WHOOP detail panels
+Home keeps the quick summary first. Expand **Your sleep in detail** for source light/deep/REM/awake durations and **RR** (sleeping respiratory rate). Each completed workout expands to average/max heart rate, km and heart-rate recording coverage. Sleep duration is compared with complete source WHOOP estimated need in rounded minutes; it is not a diagnosis of sleep deficit. No missing value is inferred. Definitions/fields follow the [WHOOP API](https://developer.whoop.com/api/). No new permission scopes or services are required.
