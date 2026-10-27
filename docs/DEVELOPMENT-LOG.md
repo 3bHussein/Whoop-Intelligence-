@@ -271,3 +271,9 @@ User feedback: definitions and higher/lower labels still did not explain the mea
 - DONE: Completed workouts expand to source average/max HR, distance in km and recorded heart-rate percentage; missing values remain missing. Existing scopes, cache and backend unchanged.
 - VERIFIED locally: 108 Node tests and 12 Chromium scenarios against the versioned build, including AR/EN mobile/desktop expansion, no overflow and all prior auth/privacy/navigation regressions.
 - NEEDS TEST: Three-engine CI, production deployment, actual-owner/physical-device acceptance. Existing scheduler, real token-expiry and transactional deletion blockers unchanged.
+
+### Sleep/workout detail release evidence
+- VERIFIED: implementation `72b933bf5ae86705e77eb315229e2f93f04cffb0`, [PR #12](https://github.com/3bHussein/Whoop-Intelligence-/pull/12), merge `343e970459170e2125a6401f0dcb2e73f0876e6b`.
+- VERIFIED: [CI 40503552958](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/40503552958) executed 108 Node tests and 36 Chromium/Firefox/WebKit scenarios successfully. Arabic mobile sleep-detail panel visually reviewed using fixtures.
+- DONE / VERIFIED: [Pages 40503824011](https://github.com/3bHussein/Whoop-Intelligence-/actions/runs/40503824011) succeeded. Public analysis HTML plus merge-versioned daily-home/dashboard JS and CSS returned HTTP 200 and matched exact built-source hashes.
+- NEEDS TEST: Real-owner and physical Android acceptance; existing integration and operational blockers remain open. This evidence commit changes documentation only.
