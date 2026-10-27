@@ -19,3 +19,6 @@ Object.assign(copy.en,{rhr:'RHR — Resting heart rate',hrv:'HRV — Heart rate 
 
 Object.assign(copy.ar,{insights:'افهم بياناتك'});
 Object.assign(copy.en,{insights:'Understand my data'});
+
+Object.assign(copy.ar,{overview:'الرئيسية',training:'النشاط',settings:'المزيد'});
+Object.assign(copy.en,{overview:'Home',training:'Activity',settings:'More'});
